@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ronalda11y Button</title>
+    <link rel="stylesheet" href="demo.css" />
+    <script src="../../js/button.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1><a href="https://github.com/Neil-Lin/Ronalda11y" target="_blank" title="open new window to Ronalda11y github" rel="noreferrer noopener">Ronalda11y</a> Button</h1>
+      <h2>How to use</h2>
+      <ol>
+        <li>Add js file to html by <code>&lt;script src=&quot;&quot; defer&gt;</code> tag</li>
+        <li>using <code>&lt;ry-btn&gt;</code> tag</li>
+      </ol>
+      <h2>Attribute</h2>
+      <table>
+        <caption>
+          Ronalda11y button inherit attributes, but some custom...
+        </caption>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Available value</th>
+        </tr>
+        <tr>
+          <td>size</td>
+          <td>choose button size</td>
+          <td>small, large</td>
+        </tr>
+        <tr>
+          <td>disabled</td>
+          <td>disabled button</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>loading</td>
+          <td>disabled button and show loading animation</td>
+          <td></td>
+        </tr>
+      </table>
+      <h2>Size</h2>
+      <ry-btn size="small">Small Button</ry-btn>
+      <ry-btn>Button</ry-btn>
+      <ry-btn size="large">Large Button</ry-btn>
+      <h2>Attribute</h2>
+      <ry-btn type="submit" title="Button">Add Attribute</ry-btn>
+      <h2>Disabled</h2>
+      <p>
+        We do not recommend using the disabled and loading attributes because
+        elements marked as disabled cannot be focused by the keyboard, and
+        screen reading software will often ignore them. Additionally, the
+        disabled state is typically designed to be less visually prominent to
+        discourage attention or premature interaction. If possible, consider
+        using a method that provides error feedback after an attempt to
+        interact, rather than disabling the button. However, this concept has
+        not yet become widely accepted, and there are indeed scenarios where
+        using disabled is appropriate. Therefore, we have still designed it to
+        be usable.
+      </p>
+      <ry-btn disabled>Disabled Button</ry-btn>
+      <h2>Loading</h2>
+      <ry-btn loading></ry-btn>
+      <ry-btn loading>Loading Button</ry-btn>
+      <h2>Custom Theme</h2>
+      <p>Using classname to create your own color system</p>
+      <ol>
+        <li>Set a classname</li>
+        <li>Set button CSS Variables in classname</li>
+        <li>Try it!</li>
+      </ol>
+      <p>we recommend set basic CSS Variables and Tokens</p>
+      <ry-btn class="ry-btn-primary-flat">Primary Button</ry-btn>
+      <ry-btn class="ry-btn-primary-flat a11y">Primary Button(enhance a11y)</ry-btn>
+      <ry-btn class="ry-btn-primary-outline">Primary Button</ry-btn>
+      <ry-btn class="ry-btn-primary-outline a11y">Primary Button(enhance a11y)</ry-btn>
+      <h3>CSS Variables</h3>
+      <table>
+        <tr>
+          <th scope="col">CSS Variables name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Default value</th>
+        </tr>
+        <tr>
+          <td>--btn-padding-vertical</td>
+          <td>padding-top and padding-bottom</td>
+          <td>0.75rem</td>
+        </tr>
+        <tr>
+          <td>--btn-padding-horizontal</td>
+          <td>padding-left and padding-right</td>
+          <td>1rem</td>
+        </tr>
+        <tr>
+          <td>--btn-text-color</td>
+          <td>text color</td>
+          <td>oklch(13.98% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--btn-text-size</td>
+          <td>font size</td>
+          <td>1rem</td>
+        </tr>
+        <tr>
+          <td>--btn-text-family</td>
+          <td>font family</td>
+          <td>'system-ui, Helvetica, Arial, sans-serif'</td>
+        </tr>
+        <tr>
+          <td>--btn-text-line-height</td>
+          <td>font line height</td>
+          <td>1.5</td>
+        </tr>
+        <tr>
+          <td>--btn-border-width</td>
+          <td>border width</td>
+          <td>1px</td>
+        </tr>
+        <tr>
+          <td>--btn-border-style</td>
+          <td>border style</td>
+          <td>solid</td>
+        </tr>
+        <tr>
+          <td>--btn-border-color</td>
+          <td>border color</td>
+          <td>oklch(78.94% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--btn-border-radius</td>
+          <td>border radius</td>
+          <td>0.25rem</td>
+        </tr>
+        <tr>
+          <td>--btn-bg</td>
+          <td>background color</td>
+          <td>oklch(99.4% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--btn-small-padding-vertical</td>
+          <td>padding-top and padding-bottom at small size</td>
+          <td>0.25rem</td>
+        </tr>
+        <tr>
+          <td>--btn-small-padding-horizontal</td>
+          <td>padding-left and padding-right at small size</td>
+          <td>0.5rem</td>
+        </tr>
+        <tr>
+          <td>--btn-large-padding-vertical</td>
+          <td>padding-top and padding-bottom at large size</td>
+          <td>1rem</td>
+        </tr>
+        <tr>
+          <td>--btn-large-padding-horizontal</td>
+          <td>padding-left and padding-right at large size</td>
+          <td>2rem</td>
+        </tr>
+        <tr>
+          <td>--btn-large-text-size</td>
+          <td>font size at large size</td>
+          <td>1.25rem</td>
+        </tr>
+        <tr>
+          <td>--btn-hover-bg</td>
+          <td>background color (hover)</td>
+          <td>oklch(94.66% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--btn-hover-border-color</td>
+          <td>border color (hover)</td>
+          <td>oklch(78.94% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--btn-active-bg</td>
+          <td>background color (active)</td>
+          <td>oklch(86.89% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--btn-active-border-color</td>
+          <td>border color (active)</td>
+          <td>oklch(78.94% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--btn-focus-shadow-width</td>
+          <td>focus border width(actually box-shadow)</td>
+          <td>3px</td>
+        </tr>
+        <tr>
+          <td>--btn-focus-shadow-color</td>
+          <td>focus border color(actually box-shadow)</td>
+          <td>oklch(83.15% 0.15681888825079074 78.05241467152487)</td>
+        </tr>
+        <tr>
+          <td>--btn-a11y-text-shadow</td>
+          <td>enhance button, using text shadow</td>
+          <td>none</td>
+        </tr>
+        <tr>
+          <td>--btn-a11y-bg-image</td>
+          <td>enhance button, using a background image</td>
+          <td>none</td>
+        </tr>
+        <tr>
+          <td>--btn-a11y-bg-size</td>
+          <td>enhance button, adjust size of background image</td>
+          <td>1.5rem 1.5rem</td>
+        </tr>
+        <tr>
+          <td>--btn-a11y-bg-position</td>
+          <td>enhance button, adjust position of background image</td>
+          <td>center center</td>
+        </tr>
+        <tr>
+          <td>--btn-a11y-hover-bg-image</td>
+          <td>enhance button, using a background image(hover)</td>
+          <td>none</td>
+        </tr>
+        <tr>
+          <td>--btn-a11y-active-bg-image</td>
+          <td>enhance button, using a background image(active)</td>
+          <td>none</td>
+        </tr>
+        <tr>
+          <td>--btn-spinner-color</td>
+          <td>color of loading</td>
+          <td>oklch(78.94% 0 0)</td>
+        </tr>
+      </table>
+    </main>
+  </body>
+</html>
