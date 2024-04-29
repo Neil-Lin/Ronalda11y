@@ -4,15 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ronalda11y Button</title>
-    <link rel="stylesheet" href="demo.css" />
-    <script src="../../js/button.js" defer></script>
+    <link rel="stylesheet" href="../demo.css" />
+    <script src="button.js" defer></script>
   </head>
   <body>
     <main>
-      <h1><a href="https://github.com/Neil-Lin/Ronalda11y" target="_blank" title="open new window to Ronalda11y github" rel="noreferrer noopener">Ronalda11y</a> Button</h1>
+      <h1>
+        <a
+          href="https://github.com/Neil-Lin/Ronalda11y"
+          target="_blank"
+          title="open new window to Ronalda11y github"
+          rel="noreferrer noopener"
+        >
+          Ronalda11y
+        </a>
+        Button
+      </h1>
       <h2>How to use</h2>
       <ol>
-        <li>Add js file to html by <code>&lt;script src=&quot;&quot; defer&gt;</code> tag</li>
+        <li>
+          Add js file to html by
+          <code>&lt;script src=&quot;&quot; defer&gt;</code> tag
+        </li>
         <li>using <code>&lt;ry-btn&gt;</code> tag</li>
       </ol>
       <h2>Attribute</h2>
@@ -45,8 +58,6 @@
       <ry-btn size="small">Small Button</ry-btn>
       <ry-btn>Button</ry-btn>
       <ry-btn size="large">Large Button</ry-btn>
-      <h2>Attribute</h2>
-      <ry-btn type="submit" title="Button">Add Attribute</ry-btn>
       <h2>Disabled</h2>
       <p>
         We do not recommend using the disabled and loading attributes because
@@ -229,6 +240,21 @@
           <td>oklch(78.94% 0 0)</td>
         </tr>
       </table>
+      <h2>Click Event</h2>
+      <form action="index.html" method="get">
+        First name: <input type="text" name="fname" />
+        <ry-btn id="testButton">Type:Button</ry-btn>
+        <ry-btn type="submit">Type:Submit</ry-btn>
+        <ry-btn type="reset">Type:Reset</ry-btn>
+      </form>
     </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const button = document.getElementById("testButton");
+        button.addEventListener("click", (event) => {
+          console.log('Button Clicked!')
+        });
+      });
+    </script>
   </body>
 </html>

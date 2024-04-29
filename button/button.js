@@ -5,12 +5,12 @@ class RyBtn extends HTMLElement {
 
     // Create button element
     this.button = document.createElement("button");
-    // Attach any initial attributes
-    this.attachInitialAttributes();
+    this.button.addEventListener('click', (event) => this.handleClick(event));
 
     // Create a slot for custom content
     const slot = document.createElement("slot");
     this.button.appendChild(slot); // Add slot inside button
+    this.shadowRoot.appendChild(this.button);
 
     // Apply CSS styles
     const style = document.createElement("style");
@@ -125,52 +125,42 @@ class RyBtn extends HTMLElement {
     this.shadowRoot.append(style, this.button);
   }
 
-  // Attach initial attributes set on <ua-button>
+  connectedCallback() {
+    this.attachInitialAttributes();
+  }
+
   attachInitialAttributes() {
-    Array.from(this.attributes).forEach((attr) => {
-      this.button.setAttribute(attr.name, attr.value);
+    Array.from(this.attributes).forEach(attr => {
+      if (attr.name !== 'style') {
+        this.button.setAttribute(attr.name, attr.value);
+      }
     });
   }
 
-  connectedCallback() {
-    // Handle attributes applied after element insertion
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === "attributes") {
-          this.button.setAttribute(
-            mutation.attributeName,
-            this.getAttribute(mutation.attributeName)
-          );
-        }
-      });
-    });
-    observer.observe(this, { attributes: true });
+  handleClick(event) {
+    if (this.button.getAttribute('type') === 'submit') {
+      const form = this.closest('form');
+      if (form) {
+        form.submit();
+      }
+    } else if (this.button.getAttribute('type') === 'reset') {
+      const form = this.closest('form');
+      if (form) {
+        form.reset();
+      }
+    }
   }
 
   static get observedAttributes() {
-    return ["disabled", "loading"];
+    return ["disabled", "loading", "type"];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (name === "disabled") {
-      // Specific logic for certain attributes
-      this.button.setAttribute(name, newValue !== null ? newValue : "");
-    } else if (name === "loading") {
+    if (name === "loading") {
       this.updateLoadingState(newValue !== null);
     } else {
-      // Automatically forward attribute changes
       this.button.setAttribute(name, newValue);
     }
-  }
-
-  createSpinner() {
-    const spinner = document.createElement("span");
-    spinner.classList.add("spinner");
-    for (let i = 0; i < 3; i++) {
-      const dot = document.createElement("span");
-      spinner.appendChild(dot);
-    }
-    return spinner;
   }
 
   updateLoadingState(isLoading) {
@@ -183,6 +173,16 @@ class RyBtn extends HTMLElement {
       this.button.removeAttribute("aria-busy");
       this.spinner && this.button.removeChild(this.spinner);
     }
+  }
+
+  createSpinner() {
+    const spinner = document.createElement("span");
+    spinner.classList.add("spinner");
+    for (let i = 0; i < 3; i++) {
+      const dot = document.createElement("span");
+      spinner.appendChild(dot);
+    }
+    return spinner;
   }
 }
 
