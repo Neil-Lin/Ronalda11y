@@ -1,0 +1,166 @@
+main {
+  padding-bottom: 4rem;
+}
+
+table {
+  border: 1px solid oklch(var(--color-black));
+  caption {
+    text-align: left;
+  }
+  th,
+  td {
+    padding: 0.5rem;
+  }
+  th {
+    background-color: oklch(var(--color-black));
+    text-align: left;
+    color: oklch(var(--color-white));
+  }
+  td {
+    border: 1px solid oklch(var(--color-gray-200));
+  }
+}
+
+p {
+  max-width: 80ch;
+  word-break: break-word;
+  hyphens: auto;
+  color: oklch(var(--color-gray-700));
+}
+
+code {
+  background-color: oklch(var(--color-gray-100));
+  color: oklch(var(--color-black));
+}
+
+.ry-btn-primary-flat {
+  /* --btn-padding-vertical:; */
+  /* --btn-padding-horizontal:; */
+
+  --btn-text-color: var(--color-white);
+  /* --btn-text-size:; */
+  /* --btn-text-family:; */
+  /* --btn-text-line-height:; */
+
+  /* --btn-border-width:; */
+  /* --btn-border-style:; */
+  --btn-border-color: var(--color-primary-500);
+  /* --btn-border-radius:; */
+
+  --btn-bg: var(--color-primary-500);
+
+  /* --btn-small-padding-vertical:; */
+  /* --btn-small-padding-horizontal:; */
+
+  /* --btn-large-padding-vertical:; */
+  /* --btn-large-padding-horizontal:; */
+  /* --btn-large-text-size:; */
+
+  --btn-hover-bg: var(--color-primary-400);
+  --btn-hover-border-color: var(--color-primary-400);
+
+  --btn-active-bg: var(--color-primary-600);
+  --btn-active-border-color: var(--color-primary-600);
+
+  /* --btn-focus-shadow-width: ; */
+  --btn-focus-shadow-color: var(--color-focus);
+
+  /*  --btn-spinner-color:; */
+
+  /* --btn-a11y-bg-position:; */
+  /* --btn-a11y-bg-size:; */
+  --btn-a11y-text-shadow: 0 0 0.25rem oklch(var(--color-black) / 0.4);
+  --btn-a11y-bg-image: linear-gradient(
+      oklch(var(--color-primary-400) / 0.4) 0.125rem,
+      transparent 0.125rem
+    ),
+    linear-gradient(
+      to right,
+      oklch(var(--color-primary-400) / 0.4) 0.125rem,
+      oklch(var(--color-primary-500)) 0.125rem
+    );
+  --btn-a11y-hover-bg-image: linear-gradient(
+      oklch(var(--color-primary-300) / 0.4) 0.125rem,
+      transparent 0.125rem
+    ),
+    linear-gradient(
+      to right,
+      oklch(var(--color-primary-300) / 0.4) 0.125rem,
+      oklch(var(--color-primary-400)) 0.125rem
+    );
+  --btn-a11y-active-bg-image: linear-gradient(
+      oklch(var(--color-primary-500) / 0.4) 0.125rem,
+      transparent 0.125rem
+    ),
+    linear-gradient(
+      to right,
+      oklch(var(--color-primary-500) / 0.4) 0.125rem,
+      oklch(var(--color-primary-600)) 0.125rem
+    );
+}
+
+.ry-btn-primary-outline {
+  /* --btn-padding-vertical:; */
+  /* --btn-padding-horizontal:; */
+
+  --btn-text-color: var(--color-primary-600);
+  /* --btn-text-size:; */
+  /* --btn-text-family:; */
+  /* --btn-text-line-height:; */
+
+  /* --btn-border-width:; */
+  /* --btn-border-style:; */
+  --btn-border-color: var(--color-primary-600);
+  /* --btn-border-radius:; */
+
+  --btn-bg: var(--color-white);
+
+  /* --btn-small-padding-vertical:; */
+  /* --btn-small-padding-horizontal:; */
+
+  /* --btn-large-padding-vertical:; */
+  /* --btn-large-padding-horizontal:; */
+  /* --btn-large-text-size:; */
+
+  --btn-hover-bg: var(--color-primary-100);
+  --btn-hover-border-color: var(--color-primary-600);
+
+  --btn-active-bg: var(--color-primary-200);
+  --btn-active-border-color: var(--color-primary-600);
+
+  /* --btn-focus-shadow-width: ; */
+  --btn-focus-shadow-color: var(--color-focus);
+
+  /*  --btn-spinner-color:; */
+
+  /* --btn-a11y-bg-position:; */
+  /* --btn-a11y-bg-size:; */
+  /* --btn-a11y-text-shadow:; */
+  --btn-a11y-bg-image: linear-gradient(
+      oklch(var(--color-primary-100) / 0.3) 0.125rem,
+      transparent 0.125rem
+    ),
+    linear-gradient(
+      to right,
+      oklch(var(--color-primary-100) / 0.3) 0.125rem,
+      oklch(var(--color-white)) 0.125rem
+    );
+  --btn-a11y-hover-bg-image: linear-gradient(
+      oklch(var(--color-primary-50) / 0.3) 0.125rem,
+      transparent 0.125rem
+    ),
+    linear-gradient(
+      to right,
+      oklch(var(--color-primary-50) / 0.3) 0.125rem,
+      oklch(var(--color-primary-100)) 0.125rem
+    );
+  --btn-a11y-active-bg-image: linear-gradient(
+      oklch(var(--color-primary-100) / 0.4) 0.125rem,
+      transparent 0.125rem
+    ),
+    linear-gradient(
+      to right,
+      oklch(var(--color-primary-100) / 0.4) 0.125rem,
+      oklch(var(--color-primary-200)) 0.125rem
+    );
+}

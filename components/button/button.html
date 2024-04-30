@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ronalda11y Button</title>
-    <link rel="stylesheet" href="../demo.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
     <script src="button.js" defer></script>
   </head>
   <body>
@@ -21,17 +21,34 @@
         Button
       </h1>
       <h2>How to use</h2>
+      <h3>HTML</h3>
       <ol>
         <li>
-          Add js file to html by
+          Add the JavaScript file to HTML using the
           <code>&lt;script src=&quot;&quot; defer&gt;</code> tag
         </li>
-        <li>using <code>&lt;ry-btn&gt;</code> tag</li>
+        <li>Use the <code>&lt;ry-btn&gt;</code> tag</li>
       </ol>
+      <h3>Nuxt3</h3>
+      <ol>
+        <li>Add the JavaScript file to the Nuxt3 project (possibly in the statics or assets folder).</li>
+        <li>
+          Add a `.client.js` file to the plugins folder with the following export:
+          <code>
+            export default defineNuxtPlugin(() => {
+              if (process.client) {
+                import('your path')
+              }
+            })   
+          </code>       
+        </li>
+        <li>Add the plugin configuration to your nuxt.config.ts (or .js):<code>plugins: ['~/plugins/rybtn.client.js']</code></li>
+      </ol>
+      <p>Ensure to replace 'your-path' with the actual path to your JavaScript file. Also, make sure the path and filenames are correct to avoid loading errors.</p>
       <h2>Attribute</h2>
       <table>
         <caption>
-          Ronalda11y button inherit attributes, but some custom...
+          The Ronalda11y button inherits attributes, with some custom options available:
         </caption>
         <tr>
           <th scope="col">Name</th>
@@ -40,17 +57,17 @@
         </tr>
         <tr>
           <td>size</td>
-          <td>choose button size</td>
+          <td>Sets the size of the button.</td>
           <td>small, large</td>
         </tr>
         <tr>
           <td>disabled</td>
-          <td>disabled button</td>
+          <td>Disables the button if set.</td>
           <td></td>
         </tr>
         <tr>
           <td>loading</td>
-          <td>disabled button and show loading animation</td>
+          <td>Disables the button and shows a loading animation when set.</td>
           <td></td>
         </tr>
       </table>
@@ -76,13 +93,14 @@
       <ry-btn loading></ry-btn>
       <ry-btn loading>Loading Button</ry-btn>
       <h2>Custom Theme</h2>
-      <p>Using classname to create your own color system</p>
+      <p>Create your own color scheme by using classnames.</p>
       <ol>
-        <li>Set a classname</li>
-        <li>Set button CSS Variables in classname</li>
-        <li>Try it!</li>
+        <li>Set a Classname: Define a custom class name for styling the button.</li>
+        <li>Define CSS Variables in the Classname: Customize the button's appearance by setting CSS variables within your classname.</li>
+        <li>Experiment: Apply your custom classname to a button and see the changes.</li>
       </ol>
-      <p>we recommend set basic CSS Variables and Tokens</p>
+      <h3>Recommendation</h3>
+      <p>We recommend establishing a set of basic CSS variables and tokens to maintain consistency across your design.</p>
       <ry-btn class="ry-btn-primary-flat">Primary Button</ry-btn>
       <ry-btn class="ry-btn-primary-flat a11y">Primary Button(enhance a11y)</ry-btn>
       <ry-btn class="ry-btn-primary-outline">Primary Button</ry-btn>

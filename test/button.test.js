@@ -1,5 +1,5 @@
 import { html, fixture, expect } from "@open-wc/testing";
-import "../button/button.js";
+import "../components/button/button.js";
 
 describe("RyBtn", () => {
   it("測試是否有 ry-btn 這個 html tag，以及是否創造 shadow-dom，而且裡面的<button>是HTMLElement", async () => {
