@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ronalda11y Breadcrumbs</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <script src="breadcrumbs.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>
+        <a
+          href="https://github.com/Neil-Lin/Ronalda11y"
+          target="_blank"
+          title="open new window to Ronalda11y github"
+          rel="noreferrer noopener"
+        >
+          Ronalda11y
+        </a>
+        Breadcrumbs
+      </h1>
+      <h2>How to use</h2>
+      <h3>HTML</h3>
+      <ry-breadcrumbs
+        label="麵包屑"
+        items='[
+          { 
+            "text":"Home",
+            "url":"/"
+          }, 
+          {
+            "text":"About",
+            "url":"/about"
+          }, 
+          { 
+            "text":"Contact",
+            "isCurrent": true
+          }
+        ]'
+      ></ry-breadcrumbs>
+      <h3>Nuxt3</h3>
+      <h2>Attribute</h2>
+      <table>
+        <caption>
+          The Ronalda11y button inherits attributes, with some custom options
+          available:
+        </caption>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Available value</th>
+        </tr>
+        <tr>
+          <td>size</td>
+          <td>Sets the size of the button.</td>
+          <td>small, large</td>
+        </tr>
+        <tr>
+          <td>disabled</td>
+          <td>Disables the button if set.</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>loading</td>
+          <td>Disables the button and shows a loading animation when set.</td>
+          <td></td>
+        </tr>
+      </table>
+
+      <h3>CSS Variables</h3>
+      <table>
+        <tr>
+          <th scope="col">CSS Variables name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Default value</th>
+        </tr>
+      </table>
+    </main>
+  </body>
+</html>

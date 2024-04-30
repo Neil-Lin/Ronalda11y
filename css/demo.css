@@ -146,21 +146,142 @@ code {
       oklch(var(--color-white)) 0.125rem
     );
   --btn-a11y-hover-bg-image: linear-gradient(
-      oklch(var(--color-primary-50) / 0.3) 0.125rem,
+      oklch(var(--color-primary-200) / 0.4) 0.125rem,
       transparent 0.125rem
     ),
     linear-gradient(
       to right,
-      oklch(var(--color-primary-50) / 0.3) 0.125rem,
-      oklch(var(--color-primary-100)) 0.125rem
+      oklch(var(--color-primary-200) / 0.4) 0.125rem,
+     transparent  0.125rem
     );
   --btn-a11y-active-bg-image: linear-gradient(
-      oklch(var(--color-primary-100) / 0.4) 0.125rem,
+      oklch(var(--color-primary-300) / 0.4) 0.125rem,
       transparent 0.125rem
     ),
     linear-gradient(
       to right,
-      oklch(var(--color-primary-100) / 0.4) 0.125rem,
-      oklch(var(--color-primary-200)) 0.125rem
+      oklch(var(--color-primary-300) / 0.4) 0.125rem,
+     transparent  0.125rem
     );
 }
+
+.ry-btn-success-flat {
+  /* --btn-padding-vertical:; */
+  /* --btn-padding-horizontal:; */
+
+  --btn-text-color: var(--color-white);
+  /* --btn-text-size:; */
+  /* --btn-text-family:; */
+  /* --btn-text-line-height:; */
+
+  /* --btn-border-width:; */
+  /* --btn-border-style:; */
+  --btn-border-color: var(--color-success-500);
+  /* --btn-border-radius:; */
+
+  --btn-bg: var(--color-success-500);
+
+  /* --btn-small-padding-vertical:; */
+  /* --btn-small-padding-horizontal:; */
+
+  /* --btn-large-padding-vertical:; */
+  /* --btn-large-padding-horizontal:; */
+  /* --btn-large-text-size:; */
+
+  --btn-hover-bg: var(--color-success-400);
+  --btn-hover-border-color: var(--color-success-400);
+
+  --btn-active-bg: var(--color-success-600);
+  --btn-active-border-color: var(--color-success-600);
+
+  /* --btn-focus-shadow-width: ; */
+  --btn-focus-shadow-color: var(--color-focus);
+
+  /*  --btn-spinner-color:; */
+
+  --btn-a11y-bg-position: 0 0;
+  --btn-a11y-bg-size: auto;
+  --btn-a11y-text-shadow: 0 0 0.25rem oklch(var(--color-black) / 0.4);
+  --btn-a11y-bg-image: repeating-linear-gradient(
+    45deg,
+    oklch(var(--color-white) / 0.1),
+    oklch(var(--color-white) / 0.1) 0.25rem,
+    oklch(var(--color-success-500)) 0.25rem,
+    oklch(var(--color-success-500)) 1.25rem
+  );
+  --btn-a11y-hover-bg-image: repeating-linear-gradient(
+    45deg,
+    oklch(var(--color-white) / 0.1),
+    oklch(var(--color-white) / 0.1) 0.25rem,
+    oklch(var(--color-success-400)) 0.25rem,
+    oklch(var(--color-success-400)) 1.25rem
+  );
+  --btn-a11y-active-bg-image: repeating-linear-gradient(
+    45deg,
+    oklch(var(--color-white) / 0.1),
+    oklch(var(--color-white) / 0.1) 0.25rem,
+    oklch(var(--color-success-600)) 0.25rem,
+    oklch(var(--color-success-600)) 1.25rem
+  );
+}
+
+.ry-btn-success-outline {
+  /* --btn-padding-vertical:; */
+  /* --btn-padding-horizontal:; */
+
+  --btn-text-color: var(--color-success-600);
+  /* --btn-text-size:; */
+  /* --btn-text-family:; */
+  /* --btn-text-line-height:; */
+
+  /* --btn-border-width:; */
+  /* --btn-border-style:; */
+  --btn-border-color: var(--color-success-600);
+  /* --btn-border-radius:; */
+
+  --btn-bg: var(--color-white);
+
+  /* --btn-small-padding-vertical:; */
+  /* --btn-small-padding-horizontal:; */
+
+  /* --btn-large-padding-vertical:; */
+  /* --btn-large-padding-horizontal:; */
+  /* --btn-large-text-size:; */
+
+  --btn-hover-bg: var(--color-success-100);
+  --btn-hover-border-color: var(--color-success-400);
+
+  --btn-active-bg: var(--color-success-200);
+  --btn-active-border-color: var(--color-success-600);
+
+  /* --btn-focus-shadow-width: ; */
+  --btn-focus-shadow-color: var(--color-focus);
+
+  /*  --btn-spinner-color:; */
+
+  --btn-a11y-bg-position: 0 0;
+  --btn-a11y-bg-size: auto;
+  /* --btn-a11y-text-shadow:; */
+  --btn-a11y-bg-image: repeating-linear-gradient(
+    45deg,
+    oklch(var(--color-success-500) / 0.1),
+    oklch(var(--color-success-500) / 0.1) 0.25rem,
+    oklch(var(--color-white)) 0.25rem,
+    oklch(var(--color-white)) 1.25rem
+  );
+  --btn-a11y-hover-bg-image: repeating-linear-gradient(
+    45deg,
+    oklch(var(--color-white) / 0.3),
+    oklch(var(--color-white) / 0.3) 0.25rem,
+    oklch(var(--color-success-100)) 0.25rem,
+    oklch(var(--color-success-100)) 1.25rem
+  );
+  --btn-a11y-active-bg-image: repeating-linear-gradient(
+    45deg,
+    oklch(var(--color-white) / 0.3),
+    oklch(var(--color-white) / 0.3) 0.25rem,
+    oklch(var(--color-success-200)) 0.25rem,
+    oklch(var(--color-success-200)) 1.25rem
+  );
+}
+
