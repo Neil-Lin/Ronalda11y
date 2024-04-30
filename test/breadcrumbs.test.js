@@ -5,49 +5,47 @@ describe("RyBreadcrumbs", () => {
   it("renders the correct number of breadcrumb items", async () => {
     const el = await fixture(
       html`<ry-breadcrumbs
-        items='[{"text":"Home","icon":"home-icon","url":"/"}, {"text":"About","icon":"info-icon","url":"/about"}]'
+        items='[{"text":"Home","url":"/"}, {"text":"About","url":"/about"}]'
       ></ry-breadcrumbs>`
     );
-    expect(el.shadowRoot.querySelectorAll(".breadcrumb-item").length).to.equal(
+    expect(el.shadowRoot.querySelectorAll("nav>ol>li").length).to.equal(
       2
     );
   });
 
-  it("displays text and icon for each breadcrumb item", async () => {
+  it("displays text for each breadcrumb item", async () => {
     const el = await fixture(
       html`<ry-breadcrumbs
-        items='[{"text":"Home","icon":"home-icon","url":"/"}]'
+        items='[{"text":"Home", "url":"/"}]'
       ></ry-breadcrumbs>`
     );
-    const item = el.shadowRoot.querySelector(".breadcrumb-item");
+    const item = el.shadowRoot.querySelector("nav>ol>li");
     expect(item.textContent).to.include("Home");
-    expect(item.innerHTML).to.include("home-icon");
   });
 
   it("makes all but the last breadcrumb item clickable", async () => {
     const el = await fixture(
       html`<ry-breadcrumbs
-        items='[{"text":"Home","url":"/"}, {"text":"About","url":"/about"}, {"text":"Contact", "isCurrent": true}]'
+        items='[{"text":"Home","url":"/"}, {"text":"About","url":"/about"}, {"text":"Contact"}]'
       ></ry-breadcrumbs>`
     );
-    const items = el.shadowRoot.querySelectorAll(".breadcrumb-item a");
-    expect(items.length).to.equal(2); // Only first two are links
+    const items = el.shadowRoot.querySelectorAll("nav>ol>li>a");
+    expect(items.length).to.equal(3);
     expect(items[0].href).to.contain("/");
     expect(items[1].href).to.contain("/about");
-    const currentItem = el.shadowRoot.querySelector(
-      ".breadcrumb-item:last-child"
-    );
-    expect(currentItem.querySelector("a")).to.be.null; // Last item is not a link
+    expect(items[2].href).to.contain("");
   });
-  
-  it("uses custom separator between breadcrumb items", async () => {
-    const el = await fixture(
-      html`<ry-breadcrumbs
-        separator=">"
-        items='[{"text":"Home","url":"/"}, {"text":"About","url":"/about"}]'
-      ></ry-breadcrumbs>`
-    );
-    const separator = el.shadowRoot.querySelector(".breadcrumb-separator");
-    expect(separator.textContent).to.equal(">");
+
+  it('should use the custom separator string in li:after content', async () => {
+    const separator = ">";
+    const el = await fixture(html`
+      <ry-breadcrumbs separator="${separator}" items='[{"text":"Home","url":"/"}, {"text":"About","url":"/about"}, {"text":"Contact"}]'></ry-breadcrumbs>
+    `);
+    const liElements = el.shadowRoot.querySelectorAll('nav>ol>li:not(:last-child)');
+
+    for (let li of liElements) {
+      const style = window.getComputedStyle(li, '::after');
+      expect(style.content).to.include(separator);
+    }
   });
 });

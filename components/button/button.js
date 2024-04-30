@@ -25,7 +25,6 @@ class RyBtn extends HTMLElement {
         /* text */
         color: oklch(var(--btn-text-color, 13.98% 0 0));
         font-size: var(--btn-text-size, 1rem);
-        font-family: var(--btn-text-family, 'system-ui, Helvetica, Arial, sans-serif');
         line-height: var(--btn-text-line-height, 1.5);
         
         /* border */
