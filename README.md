@@ -10,12 +10,12 @@ Ronalda11y focuses on making web components that comply with accessibility stand
 The name Ronalda11y is a combination of Ronald L. Mace and 'accessibility' (abbreviated as a11y), to honor the seven major principles of universal design developed under his leadership with his team.  
 
 
-## How to use
-請直接開啟元件內的 .html 檔觀看詳細資訊。  
+## 如何使用 How to use
+請直接開啟元件內的 .html 檔觀看詳細資訊，繁體中文請選擇 -zh-hant-tw.html 結尾的檔案。  
 
 Please open the .html file found in each component folder to read more.  
 
-## Web Component Test
+## 元件測試 Web Component Test
 我們使用 [@web/test-runner](https://modern-web.dev/docs/test-runner/overview/) 來測試元件，如果您想操作，請使用 Node.js 20 以上的版本。  
 並且使用 `npm ci` 與 `npm run test`，即可測試。  
 

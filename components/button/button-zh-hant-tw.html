@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ronalda11y 按鈕</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <script src="button.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>
+        <a
+          href="https://github.com/Neil-Lin/Ronalda11y"
+          target="_blank"
+          title="open new window to Ronalda11y github"
+          rel="noreferrer noopener"
+        >
+          Ronalda11y
+        </a>
+        按鈕
+      </h1>
+      <h2>如何使用</h2>
+      <h3>HTML</h3>
+      <ol>
+        <li>
+          將 JavaScript 檔案引入至 HTML
+          <code>&lt;script src=&quot;&quot; defer&gt;</code>
+        </li>
+        <li>使用 <code>&lt;ry-btn&gt;</code> 標籤</li>
+      </ol>
+      <h3>Nuxt3</h3>
+      <ol>
+        <li>將 JavaScript 檔案放到 Nuxt3 專案 (例如 statics 或 assets 資料夾)。</li>
+        <li>
+          在 plugins 資料夾新增 `.client.js` 檔案，內容範例如下：
+          <code>
+            export default defineNuxtPlugin(() => {
+              if (process.client) {
+                import('your path')
+              }
+            })   
+          </code>       
+        </li>
+        <li>在 nuxt.config.ts (或 .js) 增加 plugins:<code>plugins: ['~/plugins/yourname.client.js']</code></li>
+      </ol>
+      <p>如果發生錯誤，請先確保路徑以及名稱都正確。</p>
+      <h2>屬性</h2>
+      <table>
+        <caption>
+          寫在 Ronalda11y 按鈕上的屬性都會繼承，但以下屬性我們有做一點變化：
+        </caption>
+        <tr>
+          <th scope="col">屬性名稱</th>
+          <th scope="col">說明</th>
+          <th scope="col">可使用的值</th>
+        </tr>
+        <tr>
+          <td>size</td>
+          <td>設定按鈕大小。</td>
+          <td>small, large</td>
+        </tr>
+        <tr>
+          <td>disabled</td>
+          <td>設定按鈕為禁用狀態。</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>loading</td>
+          <td>設定按鈕為禁用狀態，並且有載入中的動畫提示。</td>
+          <td></td>
+        </tr>
+      </table>
+      <h2>大小</h2>
+      <ry-btn size="small">小按鈕</ry-btn>
+      <ry-btn>按鈕</ry-btn>
+      <ry-btn size="large">大按鈕</ry-btn>
+      <h2>禁用</h2>
+      <p>
+        我們較不推薦使用 disabled 和 loading，因為通常這兩種狀態在視覺上的設計通常會比較難看清楚，鍵盤操作無法聚焦，螢幕報讀軟體也無法偵測，所以我們比較推薦實作良好使用經驗的「回饋」方式提示使用者。
+        但我們也知道有些情境，可能這兩種狀態是很好使用的，所以我們還是實作出來。
+      </p>
+      <ry-btn disabled>禁用按鈕</ry-btn>
+      <h2>載入中</h2>
+      <ry-btn loading></ry-btn>
+      <ry-btn loading>載入中</ry-btn>
+      <h2>客製化主題色</h2>
+      <p>定義 classnames ，並撰寫 CSS 客製化您的主題色</p>
+      <ol>
+        <li>在按鈕上設定 classname</li>
+        <li>定義這個 classname，改變已經設定在按鈕裡的 CSS Variables</li>
+        <li>在畫面上查看是否有變化</li>
+      </ol>
+      <h3>推薦</h3>
+      <p>我們推薦您設定自己的Basic CSS Variables 與 Tokens Variables，會更方便地使用。</p>
+      <ry-btn class="ry-btn-primary-flat">主題色按鈕</ry-btn>
+      <ry-btn class="ry-btn-primary-flat a11y">主題色按鈕(加強顯示效果)</ry-btn>
+      <ry-btn class="ry-btn-primary-outline">主題色按鈕</ry-btn>
+      <ry-btn class="ry-btn-primary-outline a11y">主題色按鈕(加強顯示效果)</ry-btn>
+      <h3>CSS Variables</h3>
+      <table>
+        <tr>
+          <th scope="col">CSS Variables 名稱</th>
+          <th scope="col">說明</th>
+          <th scope="col">預設值</th>
+        </tr>
+        <tr>
+          <td>--btn-padding-vertical</td>
+          <td>上下內距</td>
+          <td>0.75rem</td>
+        </tr>
+        <tr>
+          <td>--btn-padding-horizontal</td>
+          <td>左右內距</td>
+          <td>1rem</td>
+        </tr>
+        <tr>
+          <td>--btn-text-color</td>
+          <td>文字顏色</td>
+          <td>oklch(13.98% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--btn-text-size</td>
+          <td>文字大小</td>
+          <td>1rem</td>
+        </tr>
+        <tr>
+          <td>--btn-text-family</td>
+          <td>字體字型</td>
+          <td>'system-ui, Helvetica, Arial, sans-serif'</td>
+        </tr>
+        <tr>
+          <td>--btn-text-line-height</td>
+          <td>文字行高</td>
+          <td>1.5</td>
+        </tr>
+        <tr>
+          <td>--btn-border-width</td>
+          <td>邊框寬度</td>
+          <td>1px</td>
+        </tr>
+        <tr>
+          <td>--btn-border-style</td>
+          <td>邊框風格</td>
+          <td>solid</td>
+        </tr>
+        <tr>
+          <td>--btn-border-color</td>
+          <td>邊框顏色</td>
+          <td>oklch(78.94% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--btn-border-radius</td>
+          <td>邊框圓角大小</td>
+          <td>0.25rem</td>
+        </tr>
+        <tr>
+          <td>--btn-bg</td>
+          <td>按鈕背景</td>
+          <td>oklch(99.4% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--btn-small-padding-vertical</td>
+          <td>小按鈕時的上下內距</td>
+          <td>0.25rem</td>
+        </tr>
+        <tr>
+          <td>--btn-small-padding-horizontal</td>
+          <td>小按鈕時的左右內距</td>
+          <td>0.5rem</td>
+        </tr>
+        <tr>
+          <td>--btn-large-padding-vertical</td>
+          <td>大按鈕時的上下內距</td>
+          <td>1rem</td>
+        </tr>
+        <tr>
+          <td>--btn-large-padding-horizontal</td>
+          <td>大按鈕時的左右內距</td>
+          <td>2rem</td>
+        </tr>
+        <tr>
+          <td>--btn-large-text-size</td>
+          <td>大按鈕時的文字大小</td>
+          <td>1.25rem</td>
+        </tr>
+        <tr>
+          <td>--btn-hover-bg</td>
+          <td>背景顏色 (hover)</td>
+          <td>oklch(94.66% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--btn-hover-border-color</td>
+          <td>邊框顏色 (hover)</td>
+          <td>oklch(78.94% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--btn-active-bg</td>
+          <td>背景顏色 (active)</td>
+          <td>oklch(86.89% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--btn-active-border-color</td>
+          <td>邊框顏色 (active)</td>
+          <td>oklch(78.94% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--btn-focus-shadow-width</td>
+          <td>聚焦時的線寬(實際上是用 box-shadow 製作的)</td>
+          <td>3px</td>
+        </tr>
+        <tr>
+          <td>--btn-focus-shadow-color</td>
+          <td>聚焦時的線顏色(實際上是用 box-shadow 製作的)</td>
+          <td>oklch(83.15% 0.15681888825079074 78.05241467152487)</td>
+        </tr>
+        <tr>
+          <td>--btn-a11y-text-shadow</td>
+          <td>設定加強顯示效果的文字陰影效果</td>
+          <td>none</td>
+        </tr>
+        <tr>
+          <td>--btn-a11y-bg-image</td>
+          <td>設定加強顯示效果的背景圖案</td>
+          <td>none</td>
+        </tr>
+        <tr>
+          <td>--btn-a11y-bg-size</td>
+          <td>設定加強顯示效果的背景圖案呈現方式</td>
+          <td>1.5rem 1.5rem</td>
+        </tr>
+        <tr>
+          <td>--btn-a11y-bg-position</td>
+          <td>設定加強顯示效果的背景圖案位置</td>
+          <td>center center</td>
+        </tr>
+        <tr>
+          <td>--btn-a11y-hover-bg-image</td>
+          <td>設定加強顯示效果的背景圖案(hover)</td>
+          <td>none</td>
+        </tr>
+        <tr>
+          <td>--btn-a11y-active-bg-image</td>
+          <td>設定加強顯示效果的背景圖案(active)</td>
+          <td>none</td>
+        </tr>
+        <tr>
+          <td>--btn-spinner-color</td>
+          <td>載入中的圖示顏色</td>
+          <td>oklch(78.94% 0 0)</td>
+        </tr>
+      </table>
+      <h2>按鈕事件</h2>
+      <form action="index.html" method="get">
+        範例輸入框: <input type="text" name="fname" />
+        <ry-btn id="testButton">Type是Button</ry-btn>
+        <ry-btn type="submit">Type是Submit</ry-btn>
+        <ry-btn type="reset">Type是Reset</ry-btn>
+      </form>
+    </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const button = document.getElementById("testButton");
+        button.addEventListener("click", (event) => {
+          console.log('Button Clicked!')
+        });
+      });
+    </script>
+  </body>
+</html>
