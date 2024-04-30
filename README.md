@@ -18,6 +18,8 @@ Please open the .html file found in each component folder to read more.
 ## 元件測試 Web Component Test
 我們使用 [@web/test-runner](https://modern-web.dev/docs/test-runner/overview/) 來測試元件，如果您想操作，請使用 Node.js 20 以上的版本。  
 並且使用 `npm ci` 與 `npm run test`，即可測試。  
+所有元件的測試檔案放在 test 資料夾裡。  
 
 We use [@web/test-runner](https://modern-web.dev/docs/test-runner/overview/) for component testing. If you would like to run the tests, please use Node.js version 20 or higher.  
 Run `npm ci` and `npm run test` to test.  
+All test files in test folder.
