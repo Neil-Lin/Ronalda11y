@@ -33,7 +33,7 @@
       <ol>
         <li>Add the JavaScript file to the Nuxt3 project (possibly in the statics or assets folder).</li>
         <li>
-          Add a `.client.js` file to the plugins folder with the following export:
+          Add a `ry.client.js` file to the plugins folder with the following export:
           <code>
             export default defineNuxtPlugin(() => {
               if (process.client) {
@@ -42,7 +42,8 @@
             })   
           </code>       
         </li>
-        <li>Add the plugin configuration to your nuxt.config.ts (or .js):<code>plugins: ['~/plugins/rybtn.client.js']</code></li>
+        <li>Add the plugin configuration to your nuxt.config.ts (or .js):<code>plugins: ['~/plugins/ry.client.js']</code></li>
+        <li>Use the <code>&lt;ry-btn&gt;</code> tag</li>
       </ol>
       <p>Ensure to replace 'your-path' with the actual path to your JavaScript file. Also, make sure the path and filenames are correct to avoid loading errors.</p>
       <h2>Attribute</h2>

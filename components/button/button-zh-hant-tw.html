@@ -33,7 +33,7 @@
       <ol>
         <li>將 JavaScript 檔案放到 Nuxt3 專案 (例如 statics 或 assets 資料夾)。</li>
         <li>
-          在 plugins 資料夾新增 `.client.js` 檔案，內容範例如下：
+          在 plugins 資料夾新增 `ry.client.js` 檔案，內容範例如下：
           <code>
             export default defineNuxtPlugin(() => {
               if (process.client) {
@@ -42,7 +42,8 @@
             })   
           </code>       
         </li>
-        <li>在 nuxt.config.ts (或 .js) 增加 plugins:<code>plugins: ['~/plugins/yourname.client.js']</code></li>
+        <li>在 nuxt.config.ts (或 .js) 增加 plugins:<code>plugins: ['~/plugins/ry.client.js']</code></li>
+        <li>使用 <code>&lt;ry-btn&gt;</code> 標籤</li>
       </ol>
       <p>如果發生錯誤，請先確保路徑以及名稱都正確。</p>
       <h2>屬性</h2>
