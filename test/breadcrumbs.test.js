@@ -56,14 +56,15 @@ describe("RyBreadcrumbs", () => {
     const separator = ">";
     const el = await fixture(html`
       <ry-breadcrumbs
-        separator="${separator}"
-        items='[{"text":"Home","url":"/"}, {"text":"About","url":"/about"}, {"text":"Contact"}]'
-        any-attribute="this is custom attribute."
+        id="demo-id"
+        class="demo-class"
+        aria-label="demo-aria-label"
       ></ry-breadcrumbs>
     `);
     await el.updateComplete;
     const breadcrumbsInside = el.shadowRoot.querySelector('nav');
-    expect(breadcrumbsInside.getAttribute('separator')).to.equal('>');
-    expect(breadcrumbsInside.getAttribute('any-attribute')).to.equal('this is custom attribute.');
+    expect(breadcrumbsInside.getAttribute('id')).to.equal('demo-id');
+    expect(breadcrumbsInside.getAttribute('class')).to.equal('demo-class');
+    expect(breadcrumbsInside.getAttribute('aria-label')).to.equal('demo-aria-label');
   });
 });

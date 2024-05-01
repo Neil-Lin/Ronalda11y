@@ -1,47 +1,59 @@
 class RyBreadcrumbs extends HTMLElement {
   constructor() {
-    super();
-    this.attachShadow({ mode: "open" });
+    super()
+    this.attachShadow({ mode: 'open' })
   }
 
   connectedCallback() {
-    this.render(); // Initial render
-    this.observeAttributes(); // Setup attribute observation
+    this.attachInitialAttributes()
+    this.render()
   }
 
-  observeAttributes() {
-    // Observes attributes directly without using the static get observedAttributes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === "attributes") {
-          this.handleAttributeChange(
-            mutation.attributeName,
-            mutation.oldValue,
-            this.getAttribute(mutation.attributeName)
-          );
-        }
-      });
-    });
-
-    observer.observe(this, {
-      attributes: true, // Observe all attribute changes
-      attributeOldValue: true, // Provide the old value in the mutation record
-    });
+  attachInitialAttributes() {
+    // Initially copy attributes to internal elements if needed (only non-style and non-specific attributes are handled here).
+    Array.from(this.attributes).forEach((attr) => {
+      if (attr.name !== 'style' && !['class', 'label', 'items', 'separator'].includes(attr.name)) {
+        this.shadowRoot.host.setAttribute(attr.name, attr.value)
+      }
+    })
   }
 
-  handleAttributeChange(name, oldValue, newValue) {
+  static get observedAttributes() {
+    return ['id', 'class', 'aria-label', 'items', 'separator']
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
     if (oldValue !== newValue) {
-      this.render(); // Re-render on any attribute change
+      this.render()
+    }
+  }
+
+  get items() {
+    try {
+      // Attempt to parse the 'items' attribute
+      return JSON.parse(this.getAttribute('items') || '[]')
+    } catch (e) {
+      console.error("Error parsing 'items':", e)
+      return [] // Return an empty array in case of parsing error
+    }
+  }
+
+  set items(val) {
+    try {
+      JSON.parse(val) // Validate it's a proper JSON string
+      this.setAttribute('items', val)
+      this.render()
+    } catch (e) {
+      console.error("Invalid JSON provided for 'items':", val)
     }
   }
 
   render() {
-    const items = this.items || [];
-    const separator = this.getAttribute("separator") || "/";
-    let navAttributes = Array.from(this.attributes)
-      .filter((attr) => attr.name !== "items" && attr.name !== "style") // Exclude 'items' and 'style'
-      .map((attr) => `${attr.name}="${attr.value}"`)
-      .join(" ");
+    const id = this.getAttribute('id')
+    const classname = this.getAttribute('class')
+    const ariaLabel = this.getAttribute('aria-label')
+    const items = this.items // This should always be an array now
+    const separator = this.getAttribute('separator') || '/'
 
     this.shadowRoot.innerHTML = `
       <style>
@@ -96,27 +108,23 @@ class RyBreadcrumbs extends HTMLElement {
           }
         }
       </style>
-      <nav ${navAttributes}>
+      <nav 
+        ${id !== null ? `id="` + id + `"` : ''}
+        ${classname !== null ? `class="` + classname + `"` : ''}
+        ${ariaLabel !== null ? `aria-label="` + ariaLabel + `"` : ''}
+      >
         <ol>
           ${items
             .map(
               (item, index) => `
-                <li><a href="${item.url || ""}" ${index === items.length - 1 ? 'aria-current="page"' : ""}>${item.text}</a></li>
+                <li><a href="${item.url || ''}" ${index === items.length - 1 ? 'aria-current="page"' : ''}>${item.text}</a></li>
               `
             )
-            .join("")}
+            .join('')}
         </ol>
       </nav>
-    `;
-  }
-
-  get items() {
-    try {
-      return JSON.parse(this.getAttribute("items"));
-    } catch (e) {
-      return [];
-    }
+    `
   }
 }
 
-customElements.define("ry-breadcrumbs", RyBreadcrumbs);
+customElements.define('ry-breadcrumbs', RyBreadcrumbs)
