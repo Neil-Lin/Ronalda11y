@@ -33,6 +33,7 @@ code {
   color: oklch(var(--color-black));
 }
 
+/* Button */
 .ry-btn-primary-flat {
   /* --btn-padding-vertical:; */
   /* --btn-padding-horizontal:; */
@@ -285,6 +286,7 @@ code {
   );
 }
 
+/* Breadcrumbs */
 .ry-breadcrumbs {
   --breadcrumbs-bg: var(--color-gray-100);
   /* --breadcrumbs-link-padding-vertical:; */
