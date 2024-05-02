@@ -61,3 +61,4 @@ All test files in test folder.
 並且使用 `npm run build`，即可打包。  
 
 We use [vite](https://vitejs.dev/guide/) to bundle all components into a single file, resulting in two outputs: ronalda11y.js and ronalda11y.min.js. This process involves using Rollup for the integration.
+並且使用 `npm run build`，即可打包。  
