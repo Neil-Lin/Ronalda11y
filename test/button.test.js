@@ -15,8 +15,8 @@ describe("RyBtn", () => {
     expect(contentText).to.include("Test Content");
   });
   
-  it('Test if the attributes are inherited.', async () => {
-    const el = await fixture(html`<ry-btn title="this is attribute title content test"></ry-btn>`);
+  it('Test if the attributes are inherited. except @ and style', async () => {
+    const el = await fixture(html`<ry-btn title="this is attribute title content test" @click="handleClick" style="width: 10px;"></ry-btn>`);
     await el.updateComplete;
     const buttonInside = el.shadowRoot.querySelector('button');
     expect(buttonInside.getAttribute('title')).to.equal('this is attribute title content test');
