@@ -1,5 +1,5 @@
 import { html, fixture, expect } from "@open-wc/testing";
-import "../components/button/button.js";
+import "../src/components/button/button.js";
 
 describe("RyBtn", () => {
   it("Test whether the ry-btn HTML tag exists, whether a shadow DOM has been created, and whether the <button> inside is an instance of HTMLElement.", async () => {
