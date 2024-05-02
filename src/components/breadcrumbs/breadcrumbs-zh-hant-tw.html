@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ronalda11y Breadcrumbs</title>
+    <title>Ronalda11y 麵包屑</title>
     <link rel="stylesheet" href="../../../css/style.css" />
     <script src="breadcrumbs.js" defer></script>
   </head>
@@ -13,29 +13,29 @@
         <a
           href="https://github.com/Neil-Lin/Ronalda11y"
           target="_blank"
-          title="open new window to Ronalda11y github"
+          title="另開視窗到 Ronalda11y github"
           rel="noreferrer noopener"
         >
           Ronalda11y
         </a>
-        Breadcrumbs
+        麵包屑
       </h1>
-      <h2>How to use</h2>
+      <h2>如何使用</h2>
       <h3>HTML</h3>
       <ol>
-        <li>Copy file (breadcrumbs.js or ronalda11y.js or ronalda11y.min.js)</li>
+        <li>複製檔案 (button.js 或 ronalda11y.js 或 ronalda11y.min.js)</li>
         <li>
-          Add the JavaScript file to HTML using the
-          <code>&lt;script src=&quot;&quot; defer&gt;</code> tag
+          將 JavaScript 檔案引入至 HTML
+          <code>&lt;script src=&quot;&quot; defer&gt;</code>
         </li>
-        <li>Use the <code>&lt;ry-btn&gt;</code> tag</li>
+        <li>使用 <code>&lt;ry-breadcrumbs&gt;</code> 標籤</li>
       </ol>
       <h3>Nuxt3</h3>
       <ol>
-        <li>Copy file (breadcrumbs.js or ronalda11y.js or ronalda11y.min.js)</li>
-        <li>Add the JavaScript file to the Nuxt3 project.</li>
+        <li>複製檔案 (button.js 或 ronalda11y.js 或 ronalda11y.min.js)</li>
+        <li>將 JavaScript 檔案放到 Nuxt3 專案。</li>
         <li>
-          Add a `ry.client.js` file to the plugins folder with the following export:
+          在 plugins 資料夾新增 `ry.client.js` 檔案，內容範例如下：
           <code>
             export default defineNuxtPlugin(() => {
               if (process.client) {
@@ -44,50 +44,52 @@
             })   
           </code>       
         </li>
-        <li>Add the plugin configuration to your nuxt.config.ts (or .js):<code>plugins: ['~/plugins/ry.client.js']</code></li>
-        <li>Use the <code>&lt;ry-btn&gt;</code> tag</li>
+        <li>在 nuxt.config.ts (或 .js) 增加 plugins:<code>plugins: ['~/plugins/ry.client.js']</code></li>
+        <li>使用 <code>&lt;ry-breadcrumbs&gt;</code> 標籤</li>
       </ol>
-      <h2>Attribute</h2>
+      <h2>屬性</h2>
       <table>
-        The Ronalda11y breadcrumbs inherits attributes, with some custom options available:
+        <caption>
+          寫在 Ronalda11y 麵包屑上的屬性都會繼承，但以下屬性我們有做一點變化：
+        </caption>
         <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Description</th>
-          <th scope="col">Type</th>
-          <th scope="col">Default value</th>
+          <th scope="col">屬性名稱</th>
+          <th scope="col">說明</th>
+          <th scope="col">類型</th>
+          <th scope="col">預設值</th>
         </tr>
         <tr>
           <td>id</td>
-          <td>Sets id</td>
+          <td>設定 id</td>
           <td>string</td>
           <td></td>
         </tr>
         <tr>
           <td>class</td>
-          <td>Sets classname</td>
+          <td>設定 classname</td>
           <td>string</td>
           <td></td>
         </tr>
         <tr>
           <td>aria-label</td>
-          <td>Sets aria-label</td>
+          <td>設定 aria-label</td>
           <td>string</td>
           <td></td>
         </tr>
         <tr>
           <td>separator</td>
-          <td>Sets the separator between breadcrumb items.</td>
+          <td>設定分隔的符號</td>
           <td>string</td>
           <td>/</td>
         </tr>
         <tr>
           <td>items</td>
-          <td>Sets the text and url path of breadcrumb item.</td>
+          <td>設定麵包屑資料</td>
           <td>{ "text":string, "url":string }</td>
           <td></td>
         </tr>
       </table>
-      <h2>Basic</h2>
+      <h2>基本</h2>
       <ry-breadcrumbs
         items='[
           { 
@@ -103,119 +105,119 @@
           }
         ]'
       ></ry-breadcrumbs>
-      <h2>aria-label</h2>
-      <p>Recommend to add <code>aria-label</code></p>
+      <h2>使用 aria-label</h2>
+      <p>推薦加入 <code>aria-label</code></p>
       <ry-breadcrumbs
-        aria-label="This is main navigator."
+        aria-label="這是麵包屑"
         items='[
           { 
-            "text":"Home",
+            "text":"首頁",
             "url":"/"
           }, 
           {
-            "text":"About",
+            "text":"關於",
             "url":"/about"
           }, 
           { 
-            "text":"Contact"
+            "text":"聯絡"
           }
         ]'
       ></ry-breadcrumbs>
-      <p>open devtool you can see <code>&lt;nav aria-label="This is main navigator."&gt;</code></p>
-      <h2>Separator</h2>
+      <p>打開開發者除錯工具 devtool 會看到<code>&lt;nav aria-label="這是麵包屑"&gt;</code></p>
+      <h2>分隔符號</h2>
       <ry-breadcrumbs
-        label="This is main navigator."
+        label="這是麵包屑"
         separator=">"
         items='[
           { 
-            "text":"Home",
+            "text":"首頁",
             "url":"/"
           }, 
           {
-            "text":"About",
+            "text":"關於",
             "url":"/about"
           }, 
           { 
-            "text":"Contact"
+            "text":"聯絡"
           }
         ]'
       ></ry-breadcrumbs>
-      <h2>Custom</h2>
-      <p>Set a classname and change CSS Variables.</p>
+      <h2>客製化樣式</h2>
+      <p>設定一個你喜歡的 classname 並且在裡面改變麵包屑的 CSS Variables</p>
       <ry-breadcrumbs
         id="aaa"
         class="ry-breadcrumbs"
-        aria-label="Test navigator."
+        aria-label="這是麵包屑"
         separator=">"
         items='[
           { 
-            "text":"Home",
+            "text":"首頁",
             "url":"/"
           }, 
           {
-            "text":"About",
+            "text":"關於",
             "url":"/about"
           }, 
           { 
-            "text":"Contact"
+            "text":"聯絡"
           }
         ]'
       ></ry-breadcrumbs>
       <h3>CSS Variables</h3>
       <table>
         <tr>
-          <th scope="col">CSS Variables name</th>
-          <th scope="col">Description</th>
-          <th scope="col">Default value</th>
+          <th scope="col">CSS Variables 名稱</th>
+          <th scope="col">說明</th>
+          <th scope="col">預設值</th>
         </tr>
         <tr>
           <td>--breadcrumbs-bg</td>
-          <td>navigator background color</td>
+          <td>麵包屑背景顏色</td>
           <td>transparent</td>
         </tr>
         <tr>
           <td>--breadcrumbs-link-padding-vertical</td>
-          <td>padding-top and padding-bottom of the link</td>
+          <td>麵包屑裡的連結左右間距</td>
           <td>0.75rem</td>
         </tr>
         <tr>
           <td>--breadcrumbs-link-padding-horizontal</td>
-          <td>padding-left and padding-right of the link</td>
+          <td>麵包屑裡的連結上下間距</td>
           <td>0.5rem</td>
         </tr>
         <tr>
           <td>--breadcrumbs-text-size</td>
-          <td>text size</td>
+          <td>文字大小</td>
           <td>1rem</td>
         </tr>
         <tr>
           <td>--breadcrumbs-text-deco</td>
-          <td>text-decoration</td>
+          <td>文字底線</td>
           <td>none</td>
         </tr>
         <tr>
           <td>--breadcrumbs-link-color</td>
-          <td>color of link</td>
+          <td>連結文字顏色</td>
           <td>oklch(42.9% 0.2972777928415759 264.05202063805507)</td>
         </tr>
         <tr>
           <td>--breadcrumbs-link-visited-color</td>
-          <td>color of link(visited)</td>
+          <td>連結文字顏色(造訪過的連結)</td>
           <td>oklch(37.48% 0.167 303.51)</td>
         </tr>
         <tr>
           <td>--breadcrumbs-focus-shadow-width</td>
-          <td>border width of link(focus)</td>
+          <td>聚焦時的邊框粗細</td>
           <td>3px</td>
         </tr>
         <tr>
           <td>--breadcrumbs-focus-shadow-color</td>
-          <td>border color of link(focus)</td>
+          <td>聚焦時的邊框顏色</td>
           <td>oklch(83.15% 0.15681888825079074 78.05241467152487)</td>
         </tr>
         <tr>
           <td>--breadcrumbs-link-currentpage-color</td>
-          <td>color of link(focus)</td>
+          <td>最後一個，也就是目前頁面的文字顏色</td>
           <td>oklch(13.98% 0 0)</td>
         </tr>
       </table>
