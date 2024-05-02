@@ -12,7 +12,7 @@ Ronalda11y focuses on making web components that comply with accessibility stand
 The name Ronalda11y is a combination of Ronald L. Mace and 'accessibility' (abbreviated as a11y), to honor the seven major principles of universal design developed under his leadership with his team.  
 
 
-## 以 Web Component 開發無障礙網頁元件的挑戰 Challenge
+## 以 Web Component 開發無障礙網頁元件的挑戰 | Challenge
 
 - Shadow DOM 的獨立性：確保輔助技術可以使用元件內部的互動和結構。    
 - 鍵盤導航與焦點管理：確保鍵盤可以操作元件，並且規劃焦點的順序是合理的。  
@@ -31,20 +31,20 @@ The name Ronalda11y is a combination of Ronald L. Mace and 'accessibility' (abbr
 - Usability Across Mainstream Frontend Frameworks: Ronalda11y is developed with the principle of "copy and paste" usability to minimize the cost of creating accessible web pages, free from the pressures of version upgrades. Customization can be done independently if needed, though testing how to use Ronalda11y across various mainstream frontend frameworks can be time-consuming.  
 
 
-## 如何使用 How to use
+## 如何使用 | How to use  
 
 請直接開啟元件內的 .html 檔觀看詳細資訊，繁體中文請選擇 -zh-hant-tw.html 結尾的檔案。  
 
 Please open the .html file found in each component folder to read more.  
 
 
-## 關於開發者
+## 關於開發者 | Developer  
 
 請使用 Node.js 20 以上的版本。 
 
 Please use Node.js version 20 or higher.  
 
-### 元件測試 Test
+### 元件測試 | Test  
 
 我們使用 [@web/test-runner](https://modern-web.dev/docs/test-runner/overview/) 來測試元件， 
 並且使用 `npm ci` 與 `npm run test`，即可測試。  
@@ -54,7 +54,7 @@ We use [@web/test-runner](https://modern-web.dev/docs/test-runner/overview/) for
 Run `npm ci` and `npm run test` to test.  
 All test files in test folder.
 
-### 打包 components
+### 打包 | Build  
 
 我們使用 [vite](https://vitejs.dev/guide/) 來打包所有 components，整合到一支 ronalda11y.js 與 ronalda11y.min.js 。  
 (其中會使用到 Rollup)
