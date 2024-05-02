@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ronalda11y Card</title>
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <script src="card.js" defer></script>
+    <script src="../button/button.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>
+        <a
+          href="https://github.com/Neil-Lin/Ronalda11y"
+          target="_blank"
+          title="open new window to Ronalda11y github"
+          rel="noreferrer noopener"
+        >
+          Ronalda11y
+        </a>
+        Card
+      </h1>
+      <h2>How to use</h2>
+      <p>This card module primarily restricts the DOM order of the card content, with all other styles being customizable by the user.</p>
+      <h3>HTML</h3>
+      <ol>
+        <li>Copy file (button.js or ronalda11y.js or ronalda11y.min.js)</li>
+        <li>
+          Add the JavaScript file to HTML using the
+          <code>&lt;script src=&quot;&quot; defer&gt;</code> tag
+        </li>
+        <li>Use the <code>&lt;ry-card&gt;</code> tag</li>
+      </ol>
+      <h3>Nuxt3</h3>
+      <ol>
+        <li>Copy file (button.js or ronalda11y.js or ronalda11y.min.js)</li>
+        <li>Add the JavaScript file to the Nuxt3 project.</li>
+        <li>
+          Add a `ry.client.js` file to the plugins folder with the following export:
+          <code>
+            export default defineNuxtPlugin(() => {
+              if (process.client) {
+                import('your path')
+              }
+            })   
+          </code>       
+        </li>
+        <li>Add the plugin configuration to your nuxt.config.ts (or .js):<code>plugins: ['~/plugins/ry.client.js']</code></li>
+        <li>Use the <code>&lt;ry-card&gt;</code> tag</li>
+      </ol>
+      <h2>Slot</h2>
+      <table>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+        </tr>
+        <tr>
+          <td>heading</td>
+          <td>Set the title block of card</td>
+        </tr>
+        <tr>
+          <td>media</td>
+          <td>Set image or video</td>
+        </tr>
+        <tr>
+          <td>content</td>
+          <td>Set main description</td>
+        </tr>
+        <tr>
+          <td>footer</td>
+          <td>Set the footer of card</td>
+        </tr>
+      </table>
+      <h2>Demo</h2>
+      <p>Be mindful of the order in which you write elements and the final DOM order. The ry-card enforces that the heading must appear first, allowing screen reading software to logically read the title before the content.</p>
+      <p>You can still use grid or flex to visually swap positions.</p>
+      <ry-card>
+        <div slot="content">
+          <p>Content</p>
+          <a href="#">Link</a>
+        </div>
+        <img slot="media" src="demo.jpg" width="436" height="245" loading="lazy" alt="">
+        <div slot="footer">
+          <ry-btn>Sub Button</ry-btn><ry-btn class="ry-btn-primary-flat">Main Button</ry-btn>
+        </div>
+        <div slot="heading">
+          <div>Heading</div>
+          <ry-btn>CTA Button</ry-btn>
+        </div>
+      </ry-card>
+    </main>
+  </body>
+</html>

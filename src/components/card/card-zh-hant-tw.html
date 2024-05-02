@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ronalda11y Card</title>
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <script src="card.js" defer></script>
+    <script src="../button/button.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>
+        <a
+          href="https://github.com/Neil-Lin/Ronalda11y"
+          target="_blank"
+          title="open new window to Ronalda11y github"
+          rel="noreferrer noopener"
+        >
+          Ronalda11y
+        </a>
+        卡片
+      </h1>
+      <h2>如何使用</h2>
+      <p>這個卡片模組主要是會限定卡片內容的dom 順序，其他皆由使用者自行設定樣式</p>
+      <h3>HTML</h3>
+      <ol>
+        <li>複製檔案 (button.js 或 ronalda11y.js 或 ronalda11y.min.js)</li>
+        <li>
+          將 JavaScript 檔案引入至 HTML
+          <code>&lt;script src=&quot;&quot; defer&gt;</code>
+        </li>
+        <li>使用 <code>&lt;ry-card&gt;</code> 標籤</li>
+      </ol>
+      <h3>Nuxt3</h3>
+      <ol>
+        <li>複製檔案 (button.js 或 ronalda11y.js 或 ronalda11y.min.js)</li>
+        <li>將 JavaScript 檔案放到 Nuxt3 專案。</li>
+        <li>
+          在 plugins 資料夾新增 `ry.client.js` 檔案，內容範例如下：
+          <code>
+            export default defineNuxtPlugin(() => {
+              if (process.client) {
+                import('your path')
+              }
+            })   
+          </code>       
+        </li>
+        <li>在 nuxt.config.ts (或 .js) 增加 plugins:<code>plugins: ['~/plugins/ry.client.js']</code></li>
+        <li>使用 <code>&lt;ry-card&gt;</code> 標籤</li>
+      </ol>
+      <h2>插槽 Slot</h2>
+      <table>
+        <tr>
+          <th scope="col">名稱</th>
+          <th scope="col">描述</th>
+        </tr>
+        <tr>
+          <td>heading</td>
+          <td>新增任何東西到標題列內容裡面</td>
+        </tr>
+        <tr>
+          <td>media</td>
+          <td>設定圖片或影片</td>
+        </tr>
+        <tr>
+          <td>content</td>
+          <td>新增任何東西到 content 裡面</td>
+        </tr>
+        <tr>
+          <td>footer</td>
+          <td>新增任何東西到 footer 裡面</td>
+        </tr>
+      </table>
+      <h2>使用結果範例</h2>
+      <p>注意撰寫的順序與最終結果的 dom 順序，ry-card 規定了標題一定要先出現，讓螢幕報讀軟體先讀到標題才讀內容比較合理。</p>
+      <p>您還是可以使用 grid 或是 flex 在視覺上交換位置。</p>
+      <ry-card>
+        <div slot="content">
+          <p>內容</p>
+          <a href="#">連結</a>
+        </div>
+        <img slot="media" src="demo.jpg" width="436" height="245" loading="lazy" alt="">
+        <div slot="footer">
+          <ry-btn>次要按鈕</ry-btn><ry-btn class="ry-btn-primary-flat">主要按鈕</ry-btn>
+        </div>
+        <div slot="heading">
+          <div>文章標題</div>
+          <ry-btn>行動呼籲按鈕</ry-btn>
+        </div>
+      </ry-card>
+    </main>
+  </body>
+</html>
