@@ -168,9 +168,19 @@ class l extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
               `).join("")}
         </ol>
       </nav>
-    `}}customElements.define("ry-breadcrumbs",d);class c extends HTMLElement{constructor(){super(),this.shadow=this.attachShadow({mode:"open"});const t=document.createElement("div");t.setAttribute("class","ry-card-container"),t.innerHTML=`
-      <slot name="heading"></slot>
-      <slot name="media"></slot>
-      <slot name="content"></slot>
-      <slot name="footer"></slot>
-    `,this.shadowRoot.appendChild(t)}}customElements.define("ry-card",c);
+    `}}customElements.define("ry-breadcrumbs",d);class c extends HTMLElement{constructor(){super(),this.shadow=this.attachShadow({mode:"open"}),this.render()}render(){this.shadowRoot.innerHTML=`
+      <style>
+        .ry-card-container {
+          /* Styles for container */
+        }
+        ::slotted(*) {
+          /* General slot styles */
+        }
+      </style>
+      <div class="ry-card-container">
+        <slot name="heading"></slot>
+        <slot name="media"></slot>
+        <slot name="content"></slot>
+        <slot name="footer"></slot>
+      </div>
+    `}}customElements.define("ry-card",c);
