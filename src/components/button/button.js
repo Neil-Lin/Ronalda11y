@@ -35,7 +35,7 @@ class RyBtn extends HTMLElement {
         /* others decoration */
         background-color: oklch(var(--btn-bg, 99.4% 0 0));
         transition: background-color 160ms ease-in;
-        
+
         &[size="small"] {
           padding: var(--btn-small-padding-vertical, 0.25rem) var(--btn-small-padding-horizontal, 0.5rem);
         }
@@ -131,7 +131,7 @@ class RyBtn extends HTMLElement {
 
   attachInitialAttributes() {
     Array.from(this.attributes).forEach(attr => {
-      if (attr.name !== 'style') {
+      if (attr.name !== 'style' && !attr.name.startsWith('@')) {
         this.button.setAttribute(attr.name, attr.value);
       }
     });
@@ -158,8 +158,8 @@ class RyBtn extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     if (name === "loading") {
       this.updateLoadingState(newValue !== null);
-    } else {
-      this.button.setAttribute(name, newValue);
+    } else if (!name.startsWith('@')) {
+      this.button.setAttribute(name, newValue); 
     }
   }
 
