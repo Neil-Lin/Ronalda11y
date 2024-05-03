@@ -296,11 +296,14 @@
       </table>
       <h2>按鈕事件</h2>
       <form action="index.html" method="get">
-        範例輸入框: <input type="text" name="fname" />
+        範例輸入框: <label for="demo-form"><input type="text" name="fname" id="demo-form"/></label>
         <ry-btn id="testButton">Type是Button</ry-btn>
         <ry-btn type="submit">Type是Submit</ry-btn>
         <ry-btn type="reset">Type是Reset</ry-btn>
       </form>
+      <h2>問與答</h2>
+      <h3>如果不需要使用 loading，那就不需要使用這個 web component 了？</h3>
+      <p>沒錯，如果不需要使用到 loading 狀態，那就不需要用了。如果您覺得我們的 button CSS variables 好用的話，可以複製使用。</p>
     </main>
     <script>
       document.addEventListener("DOMContentLoaded", () => {

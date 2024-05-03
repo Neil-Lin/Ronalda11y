@@ -304,11 +304,14 @@
       </table>
       <h2>Click Event</h2>
       <form action="index.html" method="get">
-        First name: <input type="text" name="fname" />
+        First name: <label for="demo-form"><input type="text" name="fname" id="demo-form"/></label>
         <ry-btn id="testButton">Type:Button</ry-btn>
         <ry-btn type="submit">Type:Submit</ry-btn>
         <ry-btn type="reset">Type:Reset</ry-btn>
       </form>
+      <h2>FAQ</h2>
+      <h3>If you don't need the loading feature, then there's no need to use this web component, right?</h3>
+      <p>Correct. If you don't need to use the loading state, then there's no need to use it. If you find our button CSS variables useful, feel free to copy and use them.</p>
     </main>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
