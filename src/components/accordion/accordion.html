@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ronalda11y Accordion</title>
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <script src="accordion.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>
+        <a
+          href="https://github.com/Neil-Lin/Ronalda11y"
+          target="_blank"
+          title="open new window to Ronalda11y github"
+          rel="noreferrer noopener"
+        >
+          Ronalda11y
+        </a>
+        Accordion
+      </h1>
+      <h2>How to use</h2>
+      <h3>HTML</h3>
+      <ol>
+        <li>Copy file (accordion.js or ronalda11y.js or ronalda11y.min.js)</li>
+        <li>
+          Add the JavaScript file to HTML using the
+          <code>&lt;script src=&quot;&quot; defer&gt;</code> tag
+        </li>
+        <li>Use the <code>&lt;ry-accordion&gt;</code> <code>&lt;ry-accordion-item&gt;</code>tag</li>
+      </ol>
+      <h3>Nuxt3</h3>
+      <ol>
+        <li>Copy file (accordion.js or ronalda11y.js or ronalda11y.min.js)</li>
+        <li>Add the JavaScript file to the Nuxt3 project.</li>
+        <li>
+          Add a `ry.client.js` file to the plugins folder with the following export:
+          <code>
+            export default defineNuxtPlugin(() => {
+              if (process.client) {
+                import('your path')
+              }
+            })   
+          </code>       
+        </li>
+        <li>Add the plugin configuration to your nuxt.config.ts (or .js):<code>plugins: ['~/plugins/ry.client.js']</code></li>
+        <li>Use the <code>&lt;ry-accordion&gt;</code> <code>&lt;ry-accordion-item&gt;</code> tag</li>
+      </ol>
+      <h2>Basic</h2>
+      <ry-accordion>
+        <ry-accordion-item>
+          <div slot="heading">heading</div>
+          <div slot="content"><p>Content</p></div>
+        </ry-accordion-item>
+        <ry-accordion-item>
+          <div slot="heading">heading2</div>
+          <div slot="content"><div style="height: 500px;">Content2</div></div>
+        </ry-accordion-item>
+      </ry-accordion>
+      <h2>Default Open</h2>
+      <p>Add `open` attribute <code>&lt;ry-accordion-item open&gt;</code> </p>
+      <ry-accordion>
+        <ry-accordion-item open>
+          <div slot="heading">heading</div>
+          <div slot="content"><p>Content</p></div>
+        </ry-accordion-item>
+        <ry-accordion-item>
+          <div slot="heading">heading2</div>
+          <div slot="content"><div style="height: 500px;">Content2</div></div>
+        </ry-accordion-item>
+      </ry-accordion>
+      <h2>Style first-child and last-child</h2>
+      <p>Set external CSS and use<code>::part</code> style `heading` and `content`</p>
+      <p>Because We can't select `.ry-accordion-item` in ry-accordion.(Both are shadow dom)</p>
+      <code style="display: block; white-space: pre;">
+        /* demo.css */
+        /* Watch out! This is not a classname, it's HTML tag */
+        ry-accordion-item {
+          &:last-child {
+            &::part(heading){
+              border-bottom: var(--btn-border-width, 1px) var(--btn-border-style, solid) oklch(var(--btn-border-color, 78.94% 0 0));
+            }
+          }
+          &[open] {
+            &:last-child {
+              &::part(heading){
+                border-bottom: 0;
+              }
+              &::part(content){
+                border-bottom: var(--btn-border-width, 1px) var(--btn-border-style, solid) oklch(var(--btn-border-color, 78.94% 0 0));
+              }
+            }
+          }
+        } 
+      </code>
+    </main>
+  </body>
+</html>

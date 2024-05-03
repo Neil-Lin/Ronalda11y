@@ -6,14 +6,6 @@ class RyCard extends HTMLElement {
   }
   render() {
     this.shadowRoot.innerHTML = `
-      <style>
-        .ry-card-container {
-          /* Styles for container */
-        }
-        ::slotted(*) {
-          /* General slot styles */
-        }
-      </style>
       <div class="ry-card-container">
         <slot name="heading"></slot>
         <slot name="media"></slot>
