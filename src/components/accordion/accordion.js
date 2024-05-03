@@ -26,10 +26,11 @@ class RyAccordionItem extends HTMLElement {
 
       const content = document.createElement('div');
       content.setAttribute('class', 'ry-accordion-item');
+      content.setAttribute('part', 'item');
       
       content.innerHTML = `
         <style>
-          .ry-accordion-item{
+          .ry-accordion-item {
             margin-bottom: 1rem;
           }
           button {
@@ -80,7 +81,7 @@ class RyAccordionItem extends HTMLElement {
             }
             &[aria-hidden="false"] {
               display: block;
-              overscroll-behavior: var(--accordion-item-content-overscroll-behavior, contain);
+              overscroll-behavior: var(--accordion-item-content-overscroll-behavior, auto);
               max-height: var(--accordion-item-content-max-height, 300px);
               overflow: auto;
               border-left: var(--btn-border-width, 1px) var(--btn-border-style, solid) oklch(var(--btn-border-color, 78.94% 0 0));
