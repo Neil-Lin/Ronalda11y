@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ronalda11y Accordion</title>
     <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="accordion.js" defer></script>
   </head>
   <body>
@@ -47,68 +48,190 @@
         <li>Add the plugin configuration to your nuxt.config.ts (or .js):<code>plugins: ['~/plugins/ry.client.js']</code></li>
         <li>Use the <code>&lt;ry-accordion&gt;</code> <code>&lt;ry-accordion-item&gt;</code> tag</li>
       </ol>
-      <h2>Basic</h2>
-      <ry-accordion>
+      <h2>Basic &lt;slot&gt;</h2>
+      <ry-accordio>
         <ry-accordion-item>
-          <div slot="heading">heading</div>
-          <div slot="content"><p>Content</p></div>
+          <div slot="heading">Heading</div>
+          <div slot="sub">
+            sub
+          </div>
+          <div slot="deco-icon">
+            icon
+          </div>
+          <div slot="content">Content</div>
         </ry-accordion-item>
         <ry-accordion-item>
-          <div slot="heading">heading2</div>
-          <div slot="content"><div style="height: 500px;">Content2</div></div>
+          <div slot="heading">Heading2</div>
+          <div slot="sub">
+            sub
+          </div>
+          <div slot="deco-icon">
+            icon
+          </div>
+          <div slot="content">Content2</div>
         </ry-accordion-item>
       </ry-accordion>
       <h2>Default Open</h2>
       <p>Add `open` attribute <code>&lt;ry-accordion-item open&gt;</code> </p>
       <ry-accordion>
         <ry-accordion-item open>
-          <div slot="heading">heading</div>
-          <div slot="content"><p>Content</p></div>
+          <div slot="heading">Heading</div>
+          <div slot="sub">
+            sub
+          </div>
+          <div slot="deco-icon">
+            icon
+          </div>
+          <div slot="content">Content</div>
         </ry-accordion-item>
         <ry-accordion-item>
-          <div slot="heading">heading2</div>
-          <div slot="content"><div style="height: 500px;">Content2</div></div>
+          <div slot="heading">Heading2</div>
+          <div slot="sub">
+            sub
+          </div>
+          <div slot="deco-icon">
+            icon
+          </div>
+          <div slot="content">Content2</div>
         </ry-accordion-item>
       </ry-accordion>
-      <h2>Style first-child and last-child</h2>
-      <p>Set external CSS and use<code>::part</code> style `heading` and `content`</p>
-      <p>Because We can't select `.ry-accordion-item` in ry-accordion.(Both are shadow dom)</p>
-      <code style="display: block; white-space: pre;">
+      <h2>Custom</h2>
+      <h3>Heading</h3>
+      <p>We are using the same CSS Variable of `ry-btn`,so you can use the same classname of your custom button. <code>&lt;ry-accordion-item class="ry-btn-success-flat"&gt;</code></p>
+      <ry-accordio>
+        <ry-accordion-item class="ry-btn-success-flat">
+          <div slot="heading">Heading</div>
+          <div slot="sub">
+            sub
+          </div>
+          <div slot="deco-icon">
+            icon
+          </div>
+          <div slot="content">Content</div>
+        </ry-accordion-item>
+        <ry-accordion-item>
+          <div slot="heading">Heading2</div>
+          <div slot="sub">
+            sub
+          </div>
+          <div slot="deco-icon">
+            icon
+          </div>
+          <div slot="content">Content2</div>
+        </ry-accordion-item>
+      </ry-accordion>
+      <h3>If you want to select first-child and last-child</h3>
+      <p>Set external CSS and use <code>::part</code> style `button` and `region`</p>
+      <p>Because We can't select `.ry-accordion-item` in &lt;ry-accordion&gt;.(Both are shadow dom)</p>
+      <code style="display: block; white-space: pre-wrap;">
         /* demo.css */
-        /* Watch out! This is not a classname, it's HTML tag */
-        ry-accordion-item {
-          &:last-child {
-            &::part(heading){
-              border-bottom: var(--btn-border-width, 1px) var(--btn-border-style, solid) oklch(var(--btn-border-color, 78.94% 0 0));
+        .f-l-ry-accordion {
+          /* Watch out! This is not a classname, it's HTML tag */
+          ry-accordion-item {
+            &::part(item) {
+              margin-bottom: 0;
             }
-          }
-          &[open] {
+            &::part(button) {
+              border-bottom: 0;
+            }
+            &::part(region) {
+              border-bottom: 0;
+            }
+            &:first-child {
+              &::part(button){
+                border-radius: var(--ry-btn-border-radius, 0.25rem) var(--ry-btn-border-radius, 0.25rem) 0 0;
+              }
+            }
             &:last-child {
-              &::part(heading){
-                border-bottom: 0;
-              }
-              &::part(content){
-                border-bottom: var(--btn-border-width, 1px) var(--btn-border-style, solid) oklch(var(--btn-border-color, 78.94% 0 0));
+              &::part(button){
+                border-bottom: var(--ry-btn-border-width, 1px) var(--ry-btn-border-style, solid) oklch(var(--ry-btn-border-color, 78.94% 0 0));
+                border-radius: 0 0 var(--ry-btn-border-radius, 0.25rem) var(--ry-btn-border-radius, 0.25rem);
               }
             }
-          }
-        } 
+            &[open] {
+              &:last-child {
+                &::part(button) {
+                  border-bottom: 0;
+                  border-radius: 0;
+                }
+                &::part(region) {
+                  border-bottom: var(--ry-btn-border-width, 1px) var(--ry-btn-border-style, solid) oklch(var(--ry-btn-border-color, 78.94% 0 0));
+                }
+              }
+            }
+          } 
+        }
       </code>
       <br>
-      <ry-accordion class="custom-ry-accordion">
-        <ry-accordion-item open>
-          <div slot="heading">heading</div>
-          <div slot="content"><p>Content</p></div>
+      <ry-accordion class="f-l-ry-accordion">
+        <ry-accordion-item>
+          <div slot="heading">Heading</div>
+          <div slot="sub">
+            sub
+          </div>
+          <div slot="deco-icon">
+            icon
+          </div>
+          <div slot="content">Content</div>
         </ry-accordion-item>
         <ry-accordion-item>
-          <div slot="heading">heading2</div>
-          <div slot="content"><div style="height: 500px;">Content2</div></div>
+          <div slot="heading">Heading2</div>
+          <div slot="sub">
+            sub
+          </div>
+          <div slot="deco-icon">
+            icon
+          </div>
+          <div slot="content">Content2</div>
         </ry-accordion-item>
         <ry-accordion-item>
-          <div slot="heading">heading3</div>
+          <div slot="heading">Heading3</div>
+          <div slot="sub">
+            sub
+          </div>
+          <div slot="deco-icon">
+            icon
+          </div>
           <div slot="content">Content3</div>
         </ry-accordion-item>
       </ry-accordion>
+      <h3>Others</h3>
+      <ry-accordion class="custom-ry-accordion">
+        <ry-accordion-item class="ry-btn-primary-flat">
+          <div slot="heading">Heading icon using google emoji</div>
+          <div slot="sub">
+            <mark>watch this!</mark>
+          </div>
+          <div slot="deco-icon">
+            <span class="material-symbols-outlined">
+              expand_more
+            </span>
+          </div>
+          <div slot="content"><p>Content</p></div>
+        </ry-accordion-item>
+        <ry-accordion-item class="ry-btn-primary-flat">
+          <div slot="heading">Heading icon using fontawesome svg</div>
+          <div slot="deco-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width: 1rem;position: relative; top: 0.125rem;" aria-hidden="true">
+              <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.!-->
+              <path 
+                fill="white"
+                d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+              />
+            </svg>
+          </div>
+          <div slot="content"><div style="height: 500px;">Content2</div></div>
+        </ry-accordion-item>
+      </ry-accordion>
+      <h2>FAQ</h2>
+      <h3>How about HTML tag &lt;details&gt;</h3>
+      <p>&lt;details&gt; is a good choice, and we highly recommend using native HTML directly. If you opt to use &lt;details&gt;:</p>
+      <ul>
+        <li>You can change the icon using `list-style-image`.</li>
+        <li>When there is not enough width, the start of the second line of text will be below the icon.</li>
+        <li>Some browsers or screen readers might not yet support &lt;details&gt;.</li>
+        <li>If your title requires additional supplementary information, you will need to customize &lt;summary&gt; yourself.</li>
+      </ul>
     </main>
   </body>
 </html>
