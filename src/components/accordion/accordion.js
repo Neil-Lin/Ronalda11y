@@ -102,11 +102,9 @@ class RyAccordionItem extends HTMLElement {
             color: oklch(var(--ry-accordion-content-text-color, 13.98% 0 0));
             padding-left: var(--ry-accordion-content-padding-left, 1rem);
             padding-right: var(--ry-accordion-content-padding-right, 1rem);
-            transition: max-height 300ms linear;
 
             &[aria-hidden="true"] {
-              max-height: 0;
-              overflow: hidden;
+              display: none;
             }
 
             &[aria-hidden="false"] {

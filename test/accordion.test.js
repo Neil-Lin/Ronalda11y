@@ -67,10 +67,11 @@ describe('RyAccordion and RyAccordionItem', () => {
 
     const accordionItem = el.querySelector('ry-accordion-item');
     const button = accordionItem.shadowRoot.querySelector('button');
+    const heading = accordionItem.shadowRoot.querySelector('button .heading');
     const region = accordionItem.shadowRoot.querySelector('div[role="region"]');
 
     // Get the IDs from the elements
-    const titleId = button.getAttribute('id');
+    const titleId = heading.getAttribute('id');
     const regionId = region.getAttribute('id');
 
     // Check if the button's aria-controls matches the region's ID

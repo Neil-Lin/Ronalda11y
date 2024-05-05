@@ -1,4 +1,4 @@
-class l extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.button=document.createElement("button"),this.button.addEventListener("click",r=>this.handleClick(r));const t=document.createElement("slot");this.button.appendChild(t),this.shadowRoot.appendChild(this.button);const e=document.createElement("style");e.textContent=`
+class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.button=document.createElement("button"),this.button.addEventListener("click",r=>this.handleClick(r));const t=document.createElement("slot");this.button.appendChild(t),this.shadowRoot.appendChild(this.button);const e=document.createElement("style");e.textContent=`
       button {
         /* behavior */
         cursor: pointer;
@@ -104,7 +104,7 @@ class l extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
             transform: rotate(360deg);
           }
         }
-      `,this.shadowRoot.append(e,this.button)}connectedCallback(){this.attachInitialAttributes()}attachInitialAttributes(){Array.from(this.attributes).forEach(t=>{t.name!=="style"&&!t.name.startsWith("@")&&this.button.setAttribute(t.name,t.value)})}handleClick(t){if(this.button.getAttribute("type")==="submit"){const e=this.closest("form");e&&e.submit()}else if(this.button.getAttribute("type")==="reset"){const e=this.closest("form");e&&e.reset()}}static get observedAttributes(){return["disabled","loading","type"]}attributeChangedCallback(t,e,r){t==="loading"?this.updateLoadingState(r!==null):t.startsWith("@")||this.button.setAttribute(t,r)}updateLoadingState(t){t?(this.button.disabled=!0,this.button.setAttribute("aria-busy","true"),this.button.appendChild(this.createSpinner())):(this.button.disabled=!1,this.button.removeAttribute("aria-busy"),this.spinner&&this.button.removeChild(this.spinner))}createSpinner(){const t=document.createElement("span");t.classList.add("spinner");for(let e=0;e<3;e++){const r=document.createElement("span");t.appendChild(r)}return t}}window.customElements.define("ry-btn",l);class d extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.attachInitialAttributes(),this.render()}attachInitialAttributes(){Array.from(this.attributes).forEach(t=>{t.name!=="style"&&!["class","label","items","separator"].includes(t.name)&&this.shadowRoot.host.setAttribute(t.name,t.value)})}static get observedAttributes(){return["id","class","aria-label","items","separator"]}attributeChangedCallback(t,e,r){e!==r&&this.render()}get items(){try{return JSON.parse(this.getAttribute("items")||"[]")}catch(t){return console.error("Error parsing 'items':",t),[]}}set items(t){try{JSON.parse(t),this.setAttribute("items",t),this.render()}catch{console.error("Invalid JSON provided for 'items':",t)}}render(){const t=this.getAttribute("id"),e=this.getAttribute("class"),r=this.getAttribute("aria-label"),n=this.items,i=this.getAttribute("separator")||"/";this.shadowRoot.innerHTML=`
+      `,this.shadowRoot.append(e,this.button)}connectedCallback(){this.attachInitialAttributes()}attachInitialAttributes(){Array.from(this.attributes).forEach(t=>{t.name!=="style"&&!t.name.startsWith("@")&&this.button.setAttribute(t.name,t.value)})}handleClick(t){if(this.button.getAttribute("type")==="submit"){const e=this.closest("form");e&&e.submit()}else if(this.button.getAttribute("type")==="reset"){const e=this.closest("form");e&&e.reset()}}static get observedAttributes(){return["disabled","loading","type"]}attributeChangedCallback(t,e,r){t==="loading"?this.updateLoadingState(r!==null):t.startsWith("@")||this.button.setAttribute(t,r)}updateLoadingState(t){t?(this.button.disabled=!0,this.button.setAttribute("aria-busy","true"),this.button.appendChild(this.createSpinner())):(this.button.disabled=!1,this.button.removeAttribute("aria-busy"),this.spinner&&this.button.removeChild(this.spinner))}createSpinner(){const t=document.createElement("span");t.classList.add("spinner");for(let e=0;e<3;e++){const r=document.createElement("span");t.appendChild(r)}return t}}window.customElements.define("ry-btn",s);class c extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.attachInitialAttributes(),this.render()}attachInitialAttributes(){Array.from(this.attributes).forEach(t=>{t.name!=="style"&&!["class","label","items","separator"].includes(t.name)&&this.shadowRoot.host.setAttribute(t.name,t.value)})}static get observedAttributes(){return["id","class","aria-label","items","separator"]}attributeChangedCallback(t,e,r){e!==r&&this.render()}get items(){try{return JSON.parse(this.getAttribute("items")||"[]")}catch(t){return console.error("Error parsing 'items':",t),[]}}set items(t){try{JSON.parse(t),this.setAttribute("items",t),this.render()}catch{console.error("Invalid JSON provided for 'items':",t)}}render(){const t=this.getAttribute("id"),e=this.getAttribute("class"),r=this.getAttribute("aria-label"),a=this.items,n=this.getAttribute("separator")||"/";this.shadowRoot.innerHTML=`
       <style>
         nav {
           background-color: oklch(var(--ry-breadcrumbs-bg, transparent));
@@ -119,7 +119,7 @@ class l extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
               display: inline-block;
               vertical-align: middle;
               &:after {
-                content: " ${i} ";
+                content: " ${n} ";
               }
               &:last-child {
                 &:after {
@@ -163,24 +163,122 @@ class l extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
         ${r!==null?'aria-label="'+r+'"':""}
       >
         <ol>
-          ${n.map((o,s)=>`
-                <li><a href="${o.url||""}" ${s===n.length-1?'aria-current="page"':""}>${o.text}</a></li>
+          ${a.map((i,d)=>`
+                <li><a href="${i.url||""}" ${d===a.length-1?'aria-current="page"':""}>${i.text}</a></li>
               `).join("")}
         </ol>
       </nav>
-    `}}customElements.define("ry-breadcrumbs",d);class c extends HTMLElement{constructor(){super(),this.shadow=this.attachShadow({mode:"open"}),this.render()}render(){this.shadowRoot.innerHTML=`
-      <style>
-        .ry-card-container {
-          /* Styles for container */
-        }
-        ::slotted(*) {
-          /* General slot styles */
-        }
-      </style>
+    `}}customElements.define("ry-breadcrumbs",c);class l extends HTMLElement{constructor(){super(),this.shadow=this.attachShadow({mode:"open"}),this.render()}render(){this.shadowRoot.innerHTML=`
       <div class="ry-card-container">
-        <slot name="heading"></slot>
-        <slot name="media"></slot>
-        <slot name="content"></slot>
-        <slot name="footer"></slot>
+        <div><slot name="heading"></slot></div>
+        <div><slot name="media"></slot></div>
+        <div><slot name="content"></slot></div>
+        <div><slot name="footer"></slot></div>
       </div>
-    `}}customElements.define("ry-card",c);
+    `}}customElements.define("ry-card",l);class h extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"});const t=document.createElement("div");t.setAttribute("class","ry-accordion");const e=document.createElement("slot");t.appendChild(e),this.shadowRoot.appendChild(t)}}customElements.define("ry-accordion",h);class b extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"});const t=this.generateId(),e=this.generateId(),r=document.createElement("div");r.setAttribute("class","ry-accordion-item"),r.innerHTML=`
+        <style>
+          .ry-accordion-item {
+            margin-bottom: var(--ry-accordion-item-margin-bottom, 1rem);
+          }
+          button {
+            /* behavior */
+            cursor: pointer;
+            
+            /* spacing */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            word-break: break-word;
+            width: 100%;
+            text-align: left;
+            padding: var(--ry-accordion-heading-padding-vertical, 0.75rem) var(--ry-accordion-heading-padding-horizontal, 1rem);
+            
+            /* text */
+            color: oklch(var(--ry-accordion-heading-text-color, 13.98% 0 0));
+            font-size: var(--ry-accordion-heading-text-size, 1rem);
+            font-family: var(--ry-accordion-heading-text-family, 'Helvetica, Arial, sans-serif, system-ui');
+            line-height: var(--ry-accordion-heading-text-line-height, 1.5);
+            
+            /* border */
+            border: var(--ry-accordion-heading-border-width, 1px) var(--ry-accordion-heading-border-style, solid) oklch(var(--ry-accordion-heading-border-color, 78.94% 0 0));
+            border-radius: var(--ry-accordion-heading-border-radius, 0);
+            
+            /* others decoration */
+            background-color: oklch(var(--ry-accordion-heading-bg, 99.4% 0 0));
+            transition: background-color 160ms ease-in;
+
+            .heading {
+              flex: 1;
+            }
+
+            .info {
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              flex: 0 1 auto;
+            }
+
+            .deco-icon {
+              transition: transform 300ms ease-in;
+            }
+
+            &[aria-expanded="true"] {
+              .deco-icon {
+                transform: rotate3d(0, 0, 1, 180deg);
+                transform-origin: center;
+              }
+            }
+
+            &:hover {
+              background-color: oklch(var(--ry-accordion-heading-hover-bg, 94.66% 0 0));
+              border-color: oklch(var(--ry-accordion-heading-hover-border-color, 78.94% 0 0));
+            }
+            
+            &:active {
+              background-color: oklch(var(--ry-accordion-heading-active-bg, 86.89% 0 0));
+              border-color: oklch(var(--ry-accordion-heading-active-border-color, 78.94% 0 0));
+            }
+            
+            &:focus-visible {
+              outline: none;
+              box-shadow: inset 0 0 0 var(--ry-accordion-heading-focus-shadow-width, 3px) oklch(var(--ry-accordion-heading-focus-shadow-color, 83.15% 0.15681888825079074 78.05241467152487));
+            }
+          }
+
+          div[role="region"] {
+            background-color: oklch(var(--ry-accordion-content-bg, 97.31% 0 0));
+            color: oklch(var(--ry-accordion-content-text-color, 13.98% 0 0));
+            padding-left: var(--ry-accordion-content-padding-left, 1rem);
+            padding-right: var(--ry-accordion-content-padding-right, 1rem);
+
+            &[aria-hidden="true"] {
+              display: none;
+            }
+
+            &[aria-hidden="false"] {
+              display: block;
+              overscroll-behavior: var(--ry-accordion-content-overscroll-behavior, auto);
+              max-height: var(--ry-accordion-content-max-height, 300px);
+              overflow: auto;
+              border-left: var(--ry-accordion-heading-border-width, 1px) var(--ry-accordion-heading-border-style, solid) oklch(var(--ry-accordion-heading-border-color, 78.94% 0 0));
+              border-right: var(--ry-accordion-heading-border-width, 1px) var(--ry-accordion-heading-border-style, solid) oklch(var(--ry-accordion-heading-border-color, 78.94% 0 0));
+              border-bottom: var(--ry-accordion-heading-border-width, 1px) var(--ry-accordion-heading-border-style, solid) oklch(var(--ry-accordion-heading-border-color, 78.94% 0 0));
+            }
+          }
+        </style>
+        <button aria-expanded="false" aria-controls="${t}" part="button">
+            <div class="heading" id="${e}"><slot name="heading"></slot></div>
+            <div class="info">
+              <div>
+                <slot name="sub"></slot>
+              </div>
+              <div class="deco-icon"">
+                <slot name="deco-icon"></slot>
+              </div>
+            </div>
+        </button>
+        <div role="region" id="${t}" aria-labelledby="${e}" aria-hidden="true" part="region">
+            <slot name="content"></slot>
+        </div>
+      `,this.shadowRoot.append(r),this.button=this.shadowRoot.querySelector("button"),this.button.addEventListener("click",()=>this.toggleAccordion())}connectedCallback(){this.updateExpanded()}static get observedAttributes(){return["open"]}attributeChangedCallback(t,e,r){t==="open"&&this.updateExpanded()}updateExpanded(){const t=this.hasAttribute("open");this.button.setAttribute("aria-expanded",t),this.shadowRoot.querySelector('div[role="region"]').setAttribute("aria-hidden",!t)}generateId(){const t=new Uint32Array(1);return window.crypto.getRandomValues(t),`id-${t[0].toString(36)}`}toggleAccordion(){const t=this.button.getAttribute("aria-expanded")==="true";this.button.setAttribute("aria-expanded",!t),this.shadowRoot.querySelector('div[role="region"]').setAttribute("aria-hidden",t),t?this.removeAttribute("open"):this.setAttribute("open","")}}customElements.define("ry-accordion-item",b);
