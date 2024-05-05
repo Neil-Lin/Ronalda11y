@@ -29,7 +29,7 @@ class RyAccordionItem extends HTMLElement {
       content.innerHTML = `
         <style>
           .ry-accordion-item {
-            margin-bottom: var(--ry-accordion-item-gap, 1rem);
+            margin-bottom: var(--ry-accordion-item-margin-bottom, 1rem);
           }
           button {
             /* behavior */
@@ -39,27 +39,28 @@ class RyAccordionItem extends HTMLElement {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
             word-break: break-word;
             width: 100%;
             text-align: left;
-            padding: var(--ry-btn-padding-vertical, 0.75rem) var(--ry-btn-padding-horizontal, 1rem);
+            padding: var(--ry-accordion-heading-padding-vertical, 0.75rem) var(--ry-accordion-heading-padding-horizontal, 1rem);
             
             /* text */
-            color: oklch(var(--ry-btn-text-color, 13.98% 0 0));
-            font-size: var(--ry-btn-text-size, 1rem);
-            font-family: var(--ry-btn-text-family, 'Helvetica, Arial, sans-serif, system-ui');
-            line-height: var(--ry-btn-text-line-height, 1.5);
+            color: oklch(var(--ry-accordion-heading-text-color, 13.98% 0 0));
+            font-size: var(--ry-accordion-heading-text-size, 1rem);
+            font-family: var(--ry-accordion-heading-text-family, 'Helvetica, Arial, sans-serif, system-ui');
+            line-height: var(--ry-accordion-heading-text-line-height, 1.5);
             
             /* border */
-            border: var(--ry-btn-border-width, 1px) var(--ry-btn-border-style, solid) oklch(var(--ry-btn-border-color, 78.94% 0 0));
+            border: var(--ry-accordion-heading-border-width, 1px) var(--ry-accordion-heading-border-style, solid) oklch(var(--ry-accordion-heading-border-color, 78.94% 0 0));
+            border-radius: var(--ry-accordion-heading-border-radius, 0);
             
             /* others decoration */
-            background-color: oklch(var(--ry-btn-bg, 99.4% 0 0));
+            background-color: oklch(var(--ry-accordion-heading-bg, 99.4% 0 0));
             transition: background-color 160ms ease-in;
 
             .heading {
               flex: 1;
-              gap: 1rem;
             }
 
             .info {
@@ -81,26 +82,26 @@ class RyAccordionItem extends HTMLElement {
             }
 
             &:hover {
-              background-color: oklch(var(--ry-btn-hover-bg, 94.66% 0 0));
-              border-color: oklch(var(--ry-btn-hover-border-color, 78.94% 0 0));
+              background-color: oklch(var(--ry-accordion-heading-hover-bg, 94.66% 0 0));
+              border-color: oklch(var(--ry-accordion-heading-hover-border-color, 78.94% 0 0));
             }
             
             &:active {
-              background-color: oklch(var(--ry-btn-active-bg, 86.89% 0 0));
-              border-color: oklch(var(--ry-btn-active-border-color, 78.94% 0 0));
+              background-color: oklch(var(--ry-accordion-heading-active-bg, 86.89% 0 0));
+              border-color: oklch(var(--ry-accordion-heading-active-border-color, 78.94% 0 0));
             }
             
             &:focus-visible {
               outline: none;
-              box-shadow: inset 0 0 0 var(--ry-btn-focus-shadow-width, 3px) oklch(var(--ry-btn-focus-shadow-color, 83.15% 0.15681888825079074 78.05241467152487));
+              box-shadow: inset 0 0 0 var(--ry-accordion-heading-focus-shadow-width, 3px) oklch(var(--ry-accordion-heading-focus-shadow-color, 83.15% 0.15681888825079074 78.05241467152487));
             }
           }
 
           div[role="region"] {
-            background-color: oklch(var(--ry-accordion-item-content-bg, 97.31% 0 0));
-            color: oklch(var(--ry-accordion-item-content-text-color, 13.98% 0 0));
-            padding-left: var(--ry-accordion-item-content-padding-left, 1rem);
-            padding-right: var(--ry-accordion-item-content-padding-right, 1rem);
+            background-color: oklch(var(--ry-accordion-content-bg, 97.31% 0 0));
+            color: oklch(var(--ry-accordion-content-text-color, 13.98% 0 0));
+            padding-left: var(--ry-accordion-content-padding-left, 1rem);
+            padding-right: var(--ry-accordion-content-padding-right, 1rem);
             transition: max-height 300ms linear;
 
             &[aria-hidden="true"] {
@@ -110,20 +111,24 @@ class RyAccordionItem extends HTMLElement {
 
             &[aria-hidden="false"] {
               display: block;
-              overscroll-behavior: var(--ry-accordion-item-content-overscroll-behavior, auto);
-              max-height: var(--ry-accordion-item-content-max-height, 300px);
+              overscroll-behavior: var(--ry-accordion-content-overscroll-behavior, auto);
+              max-height: var(--ry-accordion-content-max-height, 300px);
               overflow: auto;
-              border-left: var(--ry-btn-border-width, 1px) var(--ry-btn-border-style, solid) oklch(var(--ry-btn-border-color, 78.94% 0 0));
-              border-right: var(--ry-btn-border-width, 1px) var(--ry-btn-border-style, solid) oklch(var(--ry-btn-border-color, 78.94% 0 0));
-              border-bottom: var(--ry-btn-border-width, 1px) var(--ry-btn-border-style, solid) oklch(var(--ry-btn-border-color, 78.94% 0 0));
+              border-left: var(--ry-accordion-heading-border-width, 1px) var(--ry-accordion-heading-border-style, solid) oklch(var(--ry-accordion-heading-border-color, 78.94% 0 0));
+              border-right: var(--ry-accordion-heading-border-width, 1px) var(--ry-accordion-heading-border-style, solid) oklch(var(--ry-accordion-heading-border-color, 78.94% 0 0));
+              border-bottom: var(--ry-accordion-heading-border-width, 1px) var(--ry-accordion-heading-border-style, solid) oklch(var(--ry-accordion-heading-border-color, 78.94% 0 0));
             }
           }
         </style>
-        <button aria-expanded="false" aria-controls="${regionId}" id="${titleId}" part="button">
-            <div class="heading"><slot name="heading"></slot></div>
+        <button aria-expanded="false" aria-controls="${regionId}" part="button">
+            <div class="heading" id="${titleId}"><slot name="heading"></slot></div>
             <div class="info">
-              <slot name="sub"></slot>
-              <div class="deco-icon""><slot name="deco-icon"></slot></div>
+              <div>
+                <slot name="sub"></slot>
+              </div>
+              <div class="deco-icon"">
+                <slot name="deco-icon"></slot>
+              </div>
             </div>
         </button>
         <div role="region" id="${regionId}" aria-labelledby="${titleId}" aria-hidden="true" part="region">

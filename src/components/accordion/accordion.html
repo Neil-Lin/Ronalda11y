@@ -49,7 +49,7 @@
         <li>Use the <code>&lt;ry-accordion&gt;</code> <code>&lt;ry-accordion-item&gt;</code> tag</li>
       </ol>
       <h2>Basic &lt;slot&gt;</h2>
-      <ry-accordio>
+      <ry-accordion>
         <ry-accordion-item>
           <div slot="heading">Heading</div>
           <div slot="sub">
@@ -95,31 +95,7 @@
           <div slot="content">Content2</div>
         </ry-accordion-item>
       </ry-accordion>
-      <h2>Custom</h2>
-      <h3>Heading</h3>
-      <p>We are using the same CSS Variable of `ry-btn`,so you can use the same classname of your custom button. <code>&lt;ry-accordion-item class="ry-btn-success-flat"&gt;</code></p>
-      <ry-accordio>
-        <ry-accordion-item class="ry-btn-success-flat">
-          <div slot="heading">Heading</div>
-          <div slot="sub">
-            sub
-          </div>
-          <div slot="deco-icon">
-            icon
-          </div>
-          <div slot="content">Content</div>
-        </ry-accordion-item>
-        <ry-accordion-item>
-          <div slot="heading">Heading2</div>
-          <div slot="sub">
-            sub
-          </div>
-          <div slot="deco-icon">
-            icon
-          </div>
-          <div slot="content">Content2</div>
-        </ry-accordion-item>
-      </ry-accordion>
+      <h2>Custom Style</h2>
       <h3>If you want to select first-child and last-child</h3>
       <p>Set external CSS and use <code>::part</code> style `button` and `region`</p>
       <p>Because We can't select `.ry-accordion-item` in &lt;ry-accordion&gt;.(Both are shadow dom)</p>
@@ -195,9 +171,137 @@
           <div slot="content">Content3</div>
         </ry-accordion-item>
       </ry-accordion>
-      <h3>Others</h3>
+      <h3>CSS Variables</h3>
+      <table>
+        <tr>
+          <th scope="col">CSS Variables name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Default value</th>
+        </tr>
+        <tr>
+          <td>--ry-accordion-item-margin-bottom</td>
+          <td>accordion-item margin-bottom</td>
+          <td>1rem</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-heading-padding-vertical</td>
+          <td>padding-top and padding-bottom</td>
+          <td>0.75rem</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-heading-padding-horizontal</td>
+          <td>padding-left and padding-right</td>
+          <td>1rem</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-heading-text-color</td>
+          <td>text color</td>
+          <td>oklch(13.98% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-heading-text-size</td>
+          <td>font size</td>
+          <td>1rem</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-heading-text-family</td>
+          <td>font family</td>
+          <td>'Helvetica, Arial, sans-serif, system-ui'</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-heading-text-line-height</td>
+          <td>font line height</td>
+          <td>1.5</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-heading-border-width</td>
+          <td>border width</td>
+          <td>1px</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-heading-border-style</td>
+          <td>border style</td>
+          <td>solid</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-heading-border-color</td>
+          <td>border color</td>
+          <td>oklch(78.94% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-heading-border-radius</td>
+          <td>border radius</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-heading-bg</td>
+          <td>background color</td>
+          <td>oklch(99.4% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-heading-hover-bg</td>
+          <td>background color (hover)</td>
+          <td>oklch(94.66% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-heading-hover-border-color</td>
+          <td>border color (hover)</td>
+          <td>oklch(78.94% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-heading-active-bg</td>
+          <td>background color (active)</td>
+          <td>oklch(86.89% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-heading-active-border-color</td>
+          <td>border color (active)</td>
+          <td>oklch(78.94% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-heading-focus-shadow-width</td>
+          <td>focus border width(actually box-shadow)</td>
+          <td>3px</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-heading-focus-shadow-color</td>
+          <td>focus border width(actually box-shadow)</td>
+          <td>3px</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-content-bg</td>
+          <td>content background</td>
+          <td>oklch(97.31% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-content-text-color</td>
+          <td>content text color</td>
+          <td>oklch(13.98% 0 0)</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-content-padding-left</td>
+          <td>content padding-left</td>
+          <td>1rem</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-content-padding-right</td>
+          <td>content padding-right</td>
+          <td>1rem</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-content-overscroll-behavior</td>
+          <td>content scroll behavior</td>
+          <td>auto</td>
+        </tr>
+        <tr>
+          <td>--ry-accordion-content-max-height</td>
+          <td>content max height</td>
+          <td>auto</td>
+        </tr>
+      </table>
+      <br>
       <ry-accordion class="custom-ry-accordion">
-        <ry-accordion-item class="ry-btn-primary-flat">
+        <ry-accordion-item>
           <div slot="heading">Heading icon using google emoji</div>
           <div slot="sub">
             <mark>watch this!</mark>
@@ -209,7 +313,7 @@
           </div>
           <div slot="content"><p>Content</p></div>
         </ry-accordion-item>
-        <ry-accordion-item class="ry-btn-primary-flat">
+        <ry-accordion-item>
           <div slot="heading">Heading icon using fontawesome svg</div>
           <div slot="deco-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width: 1rem;position: relative; top: 0.125rem;" aria-hidden="true">

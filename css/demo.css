@@ -312,7 +312,7 @@ code {
 
 .f-l-ry-accordion {
   max-width: 800px;
-  --ry-accordion-item-gap: 0;
+  --ry-accordion-item-margin-bottom: 0;
   ry-accordion-item {
     &::part(button) {
       border-bottom: 0;
@@ -348,12 +348,29 @@ code {
 .custom-ry-accordion {
   display: block;
   max-width: 800px;
-  --ry-accordion-item-content-bg: var(--color-blue-50);
-  --ry-accordion-item-content-text-color: var(--color-blue-600);
-  /* --ry-accordion-item-content-padding-left:; */
-  /* --ry-accordion-item-content-padding-right:; */
-  --ry-accordion-item-content-overscroll-behavior: contain;
-  --ry-accordion-item-content-max-height: 200px;
+  /* --ry-accordion-heading-padding-vertical:; */
+  /* --ry-accordion-heading-padding-horizontal:; */
+  --ry-accordion-heading-text-color: var(--color-white);
+  /* --ry-accordion-heading-text-size:; */
+  /* --ry-accordion-heading-text-family:; */
+  /* --ry-accordion-heading-text-line-height:; */
+  /* --ry-accordion-heading-border-radius:; */
+  /* --ry-accordion-heading-border-width:; */
+  /* --ry-accordion-heading-border-style:; */
+  --ry-accordion-heading-border-color: var(--color-primary-500);
+  --ry-accordion-heading-bg: var(--color-primary-500);
+  --ry-accordion-heading-hover-bg: var(--color-primary-400);
+  --ry-accordion-heading-hover-border-color: var(--color-primary-400);
+  --ry-accordion-heading-active-bg: var(--color-primary-600);
+  --ry-accordion-heading-active-border-color: var(--color-primary-600);
+  /* --ry-accordion-heading-focus-shadow-width:; */
+  /* --ry-accordion-heading-focus-shadow-color:; */
+  --ry-accordion-content-bg: var(--color-blue-50);
+  --ry-accordion-content-text-color: var(--color-blue-600);
+  /* --ry-accordion-content-padding-left:; */
+  /* --ry-accordion-content-padding-right:; */
+  --ry-accordion-content-overscroll-behavior: contain;
+  --ry-accordion-content-max-height: 200px;
 }
 
 
