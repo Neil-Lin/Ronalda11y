@@ -322,13 +322,16 @@ code {
     }
     &:first-child {
       &::part(button){
-        border-radius: var(--ry-btn-border-radius, 0.25rem) var(--ry-btn-border-radius, 0.25rem) 0 0;
+        border-radius: 0.25rem 0.25rem 0 0;
       }
     }
     &:last-child {
       &::part(button){
-        border-bottom: var(--ry-btn-border-width, 1px) var(--ry-btn-border-style, solid) oklch(var(--ry-btn-border-color, 78.94% 0 0));
-        border-radius: 0 0 var(--ry-btn-border-radius, 0.25rem) var(--ry-btn-border-radius, 0.25rem);
+        border-bottom: 1px solid oklch(78.94% 0 0);
+        border-radius: 0 0 0.25rem 0.25rem;
+      }
+      &::part(region){
+        border-radius: 0 0 0.25rem 0.25rem;
       }
     }
     &[open] {
@@ -338,7 +341,7 @@ code {
           border-radius: 0;
         }
         &::part(region) {
-          border-bottom: var(--ry-btn-border-width, 1px) var(--ry-btn-border-style, solid) oklch(var(--ry-btn-border-color, 78.94% 0 0));
+          border-bottom: 1px solid oklch(78.94% 0 0);
         }
       }
     }

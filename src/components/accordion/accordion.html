@@ -101,47 +101,44 @@
       <p>Because We can't select `.ry-accordion-item` in &lt;ry-accordion&gt;.(Both are shadow dom)</p>
       <code style="display: block; white-space: pre-wrap;">
         /* demo.css */
-        .f-l-ry-accordion {
-          /* Watch out! This is not a classname, it's HTML tag */
-          ry-accordion-item {
-            &::part(item) {
-              margin-bottom: 0;
+        ry-accordion-item {
+          &::part(button) {
+            border-bottom: 0;
+          }
+          &::part(region) {
+            border-bottom: 0;
+          }
+          &:first-child {
+            &::part(button){
+              border-radius: 0.25rem 0.25rem 0 0;
             }
-            &::part(button) {
-              border-bottom: 0;
+          }
+          &:last-child {
+            &::part(button){
+              border-bottom: 1px solid oklch(78.94% 0 0);
+              border-radius: 0 0 0.25rem 0.25rem;
             }
-            &::part(region) {
-              border-bottom: 0;
+            &::part(region){
+              border-radius: 0 0 0.25rem 0.25rem;
             }
-            &:first-child {
-              &::part(button){
-                border-radius: var(--ry-btn-border-radius, 0.25rem) var(--ry-btn-border-radius, 0.25rem) 0 0;
-              }
-            }
+          }
+          &[open] {
             &:last-child {
-              &::part(button){
-                border-bottom: var(--ry-btn-border-width, 1px) var(--ry-btn-border-style, solid) oklch(var(--ry-btn-border-color, 78.94% 0 0));
-                border-radius: 0 0 var(--ry-btn-border-radius, 0.25rem) var(--ry-btn-border-radius, 0.25rem);
+              &::part(button) {
+                border-bottom: 0;
+                border-radius: 0;
+              }
+              &::part(region) {
+                border-bottom: 1px solid oklch(78.94% 0 0);
               }
             }
-            &[open] {
-              &:last-child {
-                &::part(button) {
-                  border-bottom: 0;
-                  border-radius: 0;
-                }
-                &::part(region) {
-                  border-bottom: var(--ry-btn-border-width, 1px) var(--ry-btn-border-style, solid) oklch(var(--ry-btn-border-color, 78.94% 0 0));
-                }
-              }
-            }
-          } 
+          }
         }
       </code>
       <br>
       <ry-accordion class="f-l-ry-accordion">
         <ry-accordion-item>
-          <div slot="heading">Heading</div>
+          <h4 slot="heading">Heading</h4>
           <div slot="sub">
             sub
           </div>
@@ -151,7 +148,7 @@
           <div slot="content">Content</div>
         </ry-accordion-item>
         <ry-accordion-item>
-          <div slot="heading">Heading2</div>
+          <h4 slot="heading">Heading2</h4>
           <div slot="sub">
             sub
           </div>
@@ -161,7 +158,7 @@
           <div slot="content">Content2</div>
         </ry-accordion-item>
         <ry-accordion-item>
-          <div slot="heading">Heading3</div>
+          <h4 slot="heading">Heading3</h4>
           <div slot="sub">
             sub
           </div>
