@@ -34,7 +34,7 @@ describe("RyBreadcrumbs", () => {
     expect(items[2].href).to.contain("");
   });
 
-  it("should use the custom separator string in li:after content", async () => {
+  it('should use the custom separator string in li content, except the last one', async () => {
     const separator = ">";
     const el = await fixture(html`
       <ry-breadcrumbs
@@ -42,14 +42,16 @@ describe("RyBreadcrumbs", () => {
         items='[{"text":"Home","url":"/"}, {"text":"About","url":"/about"}, {"text":"Contact"}]'
       ></ry-breadcrumbs>
     `);
-    const liElements = el.shadowRoot.querySelectorAll(
-      "nav>ol>li:not(:last-child)"
-    );
 
-    for (let li of liElements) {
-      const style = window.getComputedStyle(li, "::after");
-      expect(style.content).to.include(separator);
-    }
+    const lis = el.shadowRoot.querySelectorAll('ol li');
+    lis.forEach((li, index) => {
+      const sepSpan = li.querySelector('span[aria-hidden="true"]');
+      if (index < lis.length - 1) {
+        expect(sepSpan.textContent).to.equal(separator);
+      } else {
+        expect(sepSpan).to.be.null;
+      }
+    });
   });
 
   it('Test if the attributes are inherited.', async () => {

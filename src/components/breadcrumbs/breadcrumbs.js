@@ -69,13 +69,7 @@ class RyBreadcrumbs extends HTMLElement {
             li {
               display: inline-block;
               vertical-align: middle;
-              &:after {
-                content: " ${separator} ";
-              }
               &:last-child {
-                &:after {
-                  display: none;
-                }
                 a {
                   text-decoration: none;
                 }
@@ -122,6 +116,7 @@ class RyBreadcrumbs extends HTMLElement {
                     <slot name="icon-${index+1}"></slot>
                     <span>${item.text}</span>
                   </a>
+                  ${index !== items.length - 1 ? `<span aria-hidden="true">` + separator + `</span>` : ''}
                 </li>
               `
             )
