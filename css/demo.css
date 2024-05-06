@@ -30,6 +30,7 @@ p {
   word-break: break-word;
   hyphens: auto;
   color: oklch(var(--color-gray-700));
+  margin: 0 0 1rem;
 }
 
 code {

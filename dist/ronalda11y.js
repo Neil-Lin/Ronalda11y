@@ -174,11 +174,11 @@ class d extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
         </ol>
       </nav>
     `}}customElements.define("ry-breadcrumbs",c);class l extends HTMLElement{constructor(){super(),this.shadow=this.attachShadow({mode:"open"}),this.render()}render(){this.shadowRoot.innerHTML=`
-      <div class="ry-card-container">
-        <div><slot name="heading"></slot></div>
-        <div><slot name="media"></slot></div>
-        <div><slot name="content"></slot></div>
-        <div><slot name="footer"></slot></div>
+      <div class="ry-card-container" part="ry-card-container">
+        <slot name="heading" part="heading"></slot>
+        <slot name="media" part="media"></slot>
+        <slot name="content" part="content"></slot>
+        <slot name="footer" part="footer"></slot>
       </div>
     `}}customElements.define("ry-card",l);class h extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"});const t=document.createElement("div");t.setAttribute("class","ry-accordion");const e=document.createElement("slot");t.appendChild(e),this.shadowRoot.appendChild(t)}}customElements.define("ry-accordion",h);class b extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"});const t=this.generateId(),e=this.generateId(),r=document.createElement("div");r.setAttribute("class","ry-accordion-item"),r.innerHTML=`
         <style>

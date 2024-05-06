@@ -6,11 +6,11 @@ class RyCard extends HTMLElement {
   }
   render() {
     this.shadowRoot.innerHTML = `
-      <div class="ry-card-container">
-        <div><slot name="heading"></slot></div>
-        <div><slot name="media"></slot></div>
-        <div><slot name="content"></slot></div>
-        <div><slot name="footer"></slot></div>
+      <div class="ry-card-container" part="ry-card-container">
+        <slot name="heading" part="heading"></slot>
+        <slot name="media" part="media"></slot>
+        <slot name="content" part="content"></slot>
+        <slot name="footer" part="footer"></slot>
       </div>
     `;
   }
