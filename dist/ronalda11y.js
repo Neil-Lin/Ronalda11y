@@ -118,13 +118,7 @@ class d extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
             li {
               display: inline-block;
               vertical-align: middle;
-              &:after {
-                content: " ${s} ";
-              }
               &:last-child {
-                &:after {
-                  display: none;
-                }
                 a {
                   text-decoration: none;
                 }
@@ -163,12 +157,13 @@ class d extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
         ${r!==null?'aria-label="'+r+'"':""}
       >
         <ol>
-          ${a.map((i,n)=>`
+          ${a.map((n,i)=>`
                 <li>
-                  <a href="${i.url||""}" ${n===a.length-1?'aria-current="page"':""}>
-                    <slot name="icon-${n+1}"></slot>
-                    <span>${i.text}</span>
+                  <a href="${n.url||""}" ${i===a.length-1?'aria-current="page"':""}>
+                    <slot name="icon-${i+1}"></slot>
+                    <span>${n.text}</span>
                   </a>
+                  ${i!==a.length-1?'<span aria-hidden="true">'+s+"</span>":""}
                 </li>
               `).join("")}
         </ol>
