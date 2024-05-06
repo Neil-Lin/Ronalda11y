@@ -70,12 +70,14 @@ class RyAccordionItem extends HTMLElement {
               flex: 0 1 auto;
             }
 
-            .deco-icon {
+            .icon {
               transition: transform 300ms ease-in;
+              display: flex;
+              align-items: middle;
             }
 
             &[aria-expanded="true"] {
-              .deco-icon {
+              .icon {
                 transform: rotate3d(0, 0, 1, 180deg);
                 transform-origin: center;
               }
@@ -124,8 +126,8 @@ class RyAccordionItem extends HTMLElement {
               <div>
                 <slot name="sub"></slot>
               </div>
-              <div class="deco-icon"">
-                <slot name="deco-icon"></slot>
+              <div class="icon"">
+                <slot name="icon"></slot>
               </div>
             </div>
         </button>

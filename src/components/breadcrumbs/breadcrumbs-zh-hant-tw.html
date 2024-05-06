@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant-TW">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -130,20 +130,22 @@
         separator=">"
         items='[
           { 
-            "text":"首頁",
-            "url":"/"
+            "text": "首頁",
+            "url": "/",
+            "icon": "aaa"
           }, 
           {
-            "text":"關於",
-            "url":"/about"
+            "text": "關於",
+            "url": "/about"
           }, 
           { 
-            "text":"聯絡"
+            "text": "聯絡"
           }
         ]'
       ></ry-breadcrumbs>
       <h2>客製化樣式</h2>
       <p>設定一個你喜歡的 classname 並且在裡面改變麵包屑的 CSS Variables</p>
+      <p>如果要在項目前面加 icon，則可以使用 slot="icon-{count}"，例如第二個 <code>slot="icon-2"</code></p>
       <ry-breadcrumbs
         id="aaa"
         class="ry-breadcrumbs"
@@ -151,18 +153,20 @@
         separator=">"
         items='[
           { 
-            "text":"首頁",
-            "url":"/"
+            "text": "首頁",
+            "url": "/"
           }, 
           {
-            "text":"關於",
-            "url":"/about"
+            "text": "關於",
+            "url": "/about"
           }, 
           { 
-            "text":"聯絡"
+            "text": "聯絡"
           }
         ]'
-      ></ry-breadcrumbs>
+      >
+        <span slot="icon-2">😃</span>  
+      </ry-breadcrumbs>
       <h3>CSS Variables</h3>
       <table>
         <tr>
@@ -221,6 +225,8 @@
           <td>oklch(13.98% 0 0)</td>
         </tr>
       </table>
+      <h2>心得</h2>
+      <p>這是一個很簡單的 Web Component，但我會建議使用。</p>
     </main>
   </body>
 </html>

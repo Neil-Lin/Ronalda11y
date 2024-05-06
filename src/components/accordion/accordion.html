@@ -46,7 +46,7 @@
           </code>       
         </li>
         <li>Add the plugin configuration to your nuxt.config.ts (or .js):<code>plugins: ['~/plugins/ry.client.js']</code></li>
-        <li>Use the <code>&lt;ry-accordion&gt;</code> <code>&lt;ry-accordion-item&gt;</code> tag</li>
+        <li>Use the <code>&lt;ry-accordion&gt;</code> and <code>&lt;ry-accordion-item&gt;</code> tag</li>
       </ol>
       <h2>Basic &lt;slot&gt;</h2>
       <table>
@@ -63,7 +63,7 @@
           <td>Subtitle of accordion item</td>
         </tr>
         <tr>
-          <td>deco-icon</td>
+          <td>icon</td>
           <td>icon of accordion item</td>
         </tr>
         <tr>
@@ -78,7 +78,7 @@
           <div slot="sub">
             sub
           </div>
-          <div slot="deco-icon">
+          <div slot="icon">
             icon
           </div>
           <div slot="content">Content</div>
@@ -88,7 +88,7 @@
           <div slot="sub">
             sub
           </div>
-          <div slot="deco-icon">
+          <div slot="icon">
             icon
           </div>
           <div slot="content">Content2</div>
@@ -102,7 +102,7 @@
           <div slot="sub">
             sub
           </div>
-          <div slot="deco-icon">
+          <div slot="icon">
             icon
           </div>
           <div slot="content">Content</div>
@@ -112,7 +112,7 @@
           <div slot="sub">
             sub
           </div>
-          <div slot="deco-icon">
+          <div slot="icon">
             icon
           </div>
           <div slot="content">Content2</div>
@@ -165,7 +165,7 @@
           <div slot="sub">
             sub
           </div>
-          <div slot="deco-icon">
+          <div slot="icon">
             icon
           </div>
           <div slot="content">Content</div>
@@ -175,7 +175,7 @@
           <div slot="sub">
             sub
           </div>
-          <div slot="deco-icon">
+          <div slot="icon">
             icon
           </div>
           <div slot="content">Content2</div>
@@ -185,7 +185,7 @@
           <div slot="sub">
             sub
           </div>
-          <div slot="deco-icon">
+          <div slot="icon">
             icon
           </div>
           <div slot="content">Content3</div>
@@ -326,8 +326,8 @@
           <div slot="sub">
             <mark>watch this!</mark>
           </div>
-          <div slot="deco-icon">
-            <span class="material-symbols-outlined">
+          <div slot="icon">
+            <span class="material-symbols-outlined" aria-hidden="true">
               expand_more
             </span>
           </div>
@@ -335,7 +335,7 @@
         </ry-accordion-item>
         <ry-accordion-item>
           <div slot="heading">Heading icon using fontawesome svg</div>
-          <div slot="deco-icon">
+          <div slot="icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width: 1rem;position: relative; top: 0.125rem;" aria-hidden="true">
               <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.!-->
               <path 

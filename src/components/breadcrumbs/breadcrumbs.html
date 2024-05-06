@@ -142,6 +142,7 @@
       ></ry-breadcrumbs>
       <h2>Custom</h2>
       <p>Set a classname and change CSS Variables.</p>
+      <p>If you want to add an icon in front of an item, you can use slot="icon-{count}". For example, for the second one, use `slot="icon-2"`.</p>
       <ry-breadcrumbs
         id="aaa"
         class="ry-breadcrumbs"
@@ -160,7 +161,9 @@
             "text":"Contact"
           }
         ]'
-      ></ry-breadcrumbs>
+      >
+        <span slot="icon-2">😃</span>  
+      </ry-breadcrumbs>
       <h3>CSS Variables</h3>
       <table>
         <tr>

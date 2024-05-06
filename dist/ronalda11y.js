@@ -1,4 +1,4 @@
-class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.button=document.createElement("button"),this.button.addEventListener("click",r=>this.handleClick(r));const t=document.createElement("slot");this.button.appendChild(t),this.shadowRoot.appendChild(this.button);const e=document.createElement("style");e.textContent=`
+class d extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.button=document.createElement("button"),this.button.addEventListener("click",r=>this.handleClick(r));const t=document.createElement("slot");this.button.appendChild(t),this.shadowRoot.appendChild(this.button);const e=document.createElement("style");e.textContent=`
       button {
         /* behavior */
         cursor: pointer;
@@ -104,7 +104,7 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
             transform: rotate(360deg);
           }
         }
-      `,this.shadowRoot.append(e,this.button)}connectedCallback(){this.attachInitialAttributes()}attachInitialAttributes(){Array.from(this.attributes).forEach(t=>{t.name!=="style"&&!t.name.startsWith("@")&&this.button.setAttribute(t.name,t.value)})}handleClick(t){if(this.button.getAttribute("type")==="submit"){const e=this.closest("form");e&&e.submit()}else if(this.button.getAttribute("type")==="reset"){const e=this.closest("form");e&&e.reset()}}static get observedAttributes(){return["disabled","loading","type"]}attributeChangedCallback(t,e,r){t==="loading"?this.updateLoadingState(r!==null):t.startsWith("@")||this.button.setAttribute(t,r)}updateLoadingState(t){t?(this.button.disabled=!0,this.button.setAttribute("aria-busy","true"),this.button.appendChild(this.createSpinner())):(this.button.disabled=!1,this.button.removeAttribute("aria-busy"),this.spinner&&this.button.removeChild(this.spinner))}createSpinner(){const t=document.createElement("span");t.classList.add("spinner");for(let e=0;e<3;e++){const r=document.createElement("span");t.appendChild(r)}return t}}window.customElements.define("ry-btn",s);class c extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.attachInitialAttributes(),this.render()}attachInitialAttributes(){Array.from(this.attributes).forEach(t=>{t.name!=="style"&&!["class","label","items","separator"].includes(t.name)&&this.shadowRoot.host.setAttribute(t.name,t.value)})}static get observedAttributes(){return["id","class","aria-label","items","separator"]}attributeChangedCallback(t,e,r){e!==r&&this.render()}get items(){try{return JSON.parse(this.getAttribute("items")||"[]")}catch(t){return console.error("Error parsing 'items':",t),[]}}set items(t){try{JSON.parse(t),this.setAttribute("items",t),this.render()}catch{console.error("Invalid JSON provided for 'items':",t)}}render(){const t=this.getAttribute("id"),e=this.getAttribute("class"),r=this.getAttribute("aria-label"),a=this.items,n=this.getAttribute("separator")||"/";this.shadowRoot.innerHTML=`
+      `,this.shadowRoot.append(e,this.button)}connectedCallback(){this.attachInitialAttributes()}attachInitialAttributes(){Array.from(this.attributes).forEach(t=>{t.name!=="style"&&!t.name.startsWith("@")&&this.button.setAttribute(t.name,t.value)})}handleClick(t){if(this.button.getAttribute("type")==="submit"){const e=this.closest("form");e&&e.submit()}else if(this.button.getAttribute("type")==="reset"){const e=this.closest("form");e&&e.reset()}}static get observedAttributes(){return["disabled","loading","type"]}attributeChangedCallback(t,e,r){t==="loading"?this.updateLoadingState(r!==null):t.startsWith("@")||this.button.setAttribute(t,r)}updateLoadingState(t){t?(this.button.disabled=!0,this.button.setAttribute("aria-busy","true"),this.button.appendChild(this.createSpinner())):(this.button.disabled=!1,this.button.removeAttribute("aria-busy"),this.spinner&&this.button.removeChild(this.spinner))}createSpinner(){const t=document.createElement("span");t.classList.add("spinner");for(let e=0;e<3;e++){const r=document.createElement("span");t.appendChild(r)}return t}}window.customElements.define("ry-btn",d);class c extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.attachInitialAttributes(),this.render()}attachInitialAttributes(){Array.from(this.attributes).forEach(t=>{t.name!=="style"&&!["class","label","items","separator"].includes(t.name)&&this.shadowRoot.host.setAttribute(t.name,t.value)})}static get observedAttributes(){return["id","class","aria-label","items","separator"]}attributeChangedCallback(t,e,r){e!==r&&this.render()}get items(){try{return JSON.parse(this.getAttribute("items")||"[]")}catch(t){return console.error("Error parsing 'items':",t),[]}}set items(t){try{JSON.parse(t),this.setAttribute("items",t),this.render()}catch{console.error("Invalid JSON provided for 'items':",t)}}render(){const t=this.getAttribute("id"),e=this.getAttribute("class"),r=this.getAttribute("aria-label"),a=this.items,s=this.getAttribute("separator")||"/";this.shadowRoot.innerHTML=`
       <style>
         nav {
           background-color: oklch(var(--ry-breadcrumbs-bg, transparent));
@@ -119,7 +119,7 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
               display: inline-block;
               vertical-align: middle;
               &:after {
-                content: " ${n} ";
+                content: " ${s} ";
               }
               &:last-child {
                 &:after {
@@ -163,8 +163,13 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
         ${r!==null?'aria-label="'+r+'"':""}
       >
         <ol>
-          ${a.map((i,d)=>`
-                <li><a href="${i.url||""}" ${d===a.length-1?'aria-current="page"':""}>${i.text}</a></li>
+          ${a.map((i,n)=>`
+                <li>
+                  <a href="${i.url||""}" ${n===a.length-1?'aria-current="page"':""}>
+                    <slot name="icon-${n+1}"></slot>
+                    <span>${i.text}</span>
+                  </a>
+                </li>
               `).join("")}
         </ol>
       </nav>
@@ -219,12 +224,14 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
               flex: 0 1 auto;
             }
 
-            .deco-icon {
+            .icon {
               transition: transform 300ms ease-in;
+              display: flex;
+              align-items: middle;
             }
 
             &[aria-expanded="true"] {
-              .deco-icon {
+              .icon {
                 transform: rotate3d(0, 0, 1, 180deg);
                 transform-origin: center;
               }
@@ -273,8 +280,8 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
               <div>
                 <slot name="sub"></slot>
               </div>
-              <div class="deco-icon"">
-                <slot name="deco-icon"></slot>
+              <div class="icon"">
+                <slot name="icon"></slot>
               </div>
             </div>
         </button>

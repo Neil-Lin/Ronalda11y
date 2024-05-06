@@ -88,7 +88,7 @@ describe('RyAccordion and RyAccordionItem', () => {
           <span slot="heading">Custom Heading</span>
           <div slot="content">Custom Content</div>
           <div slot="sub">Sub Info</div>
-          <div slot="deco-icon">Icon</div>
+          <div slot="icon">Icon</div>
         </ry-accordion-item>
       </ry-accordion>
     `);
@@ -97,7 +97,7 @@ describe('RyAccordion and RyAccordionItem', () => {
     const headingSlot = accordionItem.shadowRoot.querySelector('slot[name="heading"]');
     const contentSlot = accordionItem.shadowRoot.querySelector('slot[name="content"]');
     const subSlot = accordionItem.shadowRoot.querySelector('slot[name="sub"]');
-    const iconSlot = accordionItem.shadowRoot.querySelector('slot[name="deco-icon"]');
+    const iconSlot = accordionItem.shadowRoot.querySelector('slot[name="icon"]');
 
     // Fetch slotted content by assignedNodes()
     const headingContent = headingSlot.assignedNodes()[0].textContent;

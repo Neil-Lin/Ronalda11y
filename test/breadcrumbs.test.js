@@ -67,4 +67,19 @@ describe("RyBreadcrumbs", () => {
     expect(breadcrumbsInside.getAttribute('class')).to.equal('demo-class');
     expect(breadcrumbsInside.getAttribute('aria-label')).to.equal('demo-aria-label');
   });
+
+  it('displays content in slots correctly', async () => {
+    const el = await fixture(html`
+      <ry-breadcrumbs
+        items='[{"text":"Home","url":"/"}, {"text":"About","url":"/about"}, {"text":"Contact"}]'
+      >
+        <span slot="icon-2">icon</span>
+      </ry-breadcrumbs>
+    `);
+
+    await el.updateComplete;
+    const iconSlot = el.shadowRoot.querySelector('slot[name="icon-2"]');
+    const slottedContent = iconSlot.assignedNodes()[0];
+    expect(slottedContent.textContent).to.equal('icon');
+  });
 });

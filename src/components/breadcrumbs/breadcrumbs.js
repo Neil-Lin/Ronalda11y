@@ -117,7 +117,12 @@ class RyBreadcrumbs extends HTMLElement {
           ${items
             .map(
               (item, index) => `
-                <li><a href="${item.url || ''}" ${index === items.length - 1 ? 'aria-current="page"' : ''}>${item.text}</a></li>
+                <li>
+                  <a href="${item.url || ''}" ${index === items.length - 1 ? 'aria-current="page"' : ''}>
+                    <slot name="icon-${index+1}"></slot>
+                    <span>${item.text}</span>
+                  </a>
+                </li>
               `
             )
             .join('')}
