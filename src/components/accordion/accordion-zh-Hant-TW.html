@@ -118,6 +118,42 @@
           <div slot="content">Content2</div>
         </ry-accordion-item>
       </ry-accordion>
+      <h2>巢狀</h2>
+      <ry-accordion>
+        <ry-accordion-item>
+          <div slot="heading">Heading</div>
+          <div slot="sub">
+            sub
+          </div>
+          <div slot="icon">
+            icon
+          </div>
+          <div slot="content">
+            <ry-accordion>
+              <ry-accordion-item>
+                <div slot="heading">Heading</div>
+                <div slot="sub">
+                  sub
+                </div>
+                <div slot="icon">
+                  icon
+                </div>
+                <div slot="content">Content</div>
+              </ry-accordion-item>
+              <ry-accordion-item>
+                <div slot="heading">Heading2</div>
+                <div slot="sub">
+                  sub
+                </div>
+                <div slot="icon">
+                  icon
+                </div>
+                <div slot="content">Content2</div>
+              </ry-accordion-item>
+            </ry-accordion>
+          </div>
+        </ry-accordion-item>
+      </ry-accordion>
       <h2>客製化樣式</h2>
       <h3>選擇第一個與最後一個項目</h3>
       <p>在外部 CSS 使用 <code>::part</code> 裝飾 `button` 和 `region`</p>

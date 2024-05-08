@@ -102,8 +102,7 @@ class RyAccordionItem extends HTMLElement {
           div[role="region"] {
             background-color: oklch(var(--ry-accordion-content-bg, 97.31% 0 0));
             color: oklch(var(--ry-accordion-content-text-color, 13.98% 0 0));
-            padding-left: var(--ry-accordion-content-padding-left, 1rem);
-            padding-right: var(--ry-accordion-content-padding-right, 1rem);
+            padding: var(--ry-accordion-content-padding-top, 1rem)  var(--ry-accordion-content-padding-right, 1rem)  var(--ry-accordion-content-padding-bottom, 1rem)  var(--ry-accordion-content-padding-left, 1rem);
 
             &[aria-hidden="true"] {
               display: none;
@@ -164,9 +163,9 @@ class RyAccordionItem extends HTMLElement {
   }
 
   generateId() {
-      const byteArray = new Uint32Array(1);
-      window.crypto.getRandomValues(byteArray);
-      return `id-${byteArray[0].toString(36)}`;
+    const byteArray = new Uint32Array(1);
+    window.crypto.getRandomValues(byteArray);
+    return `ry-accordion-item-${byteArray[0].toString(36)}`;
   }
 
   toggleAccordion() {

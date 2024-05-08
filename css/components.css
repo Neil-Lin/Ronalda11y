@@ -324,8 +324,10 @@
   /* --ry-accordion-heading-focus-shadow-color:; */
   --ry-accordion-content-bg: var(--color-blue-50);
   --ry-accordion-content-text-color: var(--color-blue-600);
-  /* --ry-accordion-content-padding-left:; */
+  /* --ry-accordion-content-padding-top:; */
   /* --ry-accordion-content-padding-right:; */
+  /* --ry-accordion-content-padding-bottom:; */
+  /* --ry-accordion-content-padding-left:; */
   --ry-accordion-content-overscroll-behavior: contain;
   --ry-accordion-content-max-height: 200px;
 }
@@ -378,4 +380,8 @@
     gap: 1rem;
     justify-content: flex-end;
   }
+}
+
+.custom-ry-checkbox {
+  --ry-checkbox-accent-color: var(--color-blue-600);
 }
