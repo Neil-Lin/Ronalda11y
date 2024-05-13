@@ -383,5 +383,24 @@
 }
 
 .custom-ry-checkbox {
-  --ry-checkbox-accent-color: var(--color-blue-600);
+  /* --ry-checkbox-padding:; */
+  /* --ry-checkbox-content-gap:; */
+  /* --ry-checkbox-input-width:; */
+  /* --ry-checkbox-input-height:; */
+  /* --ry-checkbox-input-border-width:; */
+  /* --ry-checkbox-input-border-style:; */
+  /* --ry-checkbox-input-border-color:; */
+  /* --ry-checkbox-input-border-radius:; */
+  /* --ry-checkbox-input-bg:; */
+  /* --ry-checkbox-input-focus-shadow-width:; */
+  /* --ry-checkbox-input-focus-shadow-color:; */
+  --ry-checkbox-input-checked-bg: var(--color-primary-600);
+  /* --ry-checkbox-input-checked-symbol:; */
+  /* --ry-checkbox-input-checked-text-color:; */
+  /* --ry-checkbox-input-checked-text-size:; */
+  /* --ry-checkbox-label-text-color:; */
+  /* --ry-checkbox-label-text-size:; */
+  /* --ry-checkbox-label-hover-text-deco:; */
+  /* --ry-checkbox-label-active-text-color:; */
+  /* --ry-checkbox-label-disabled-text-color:; */
 }
