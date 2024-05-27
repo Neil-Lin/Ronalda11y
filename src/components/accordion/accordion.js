@@ -34,6 +34,7 @@ class RyAccordionItem extends HTMLElement {
           button {
             /* behavior */
             cursor: pointer;
+            -webkit-tap-highlight-color: oklch(0% 0 0 / 0);
             
             /* spacing */
             display: flex;

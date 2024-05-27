@@ -80,6 +80,7 @@ class RyBreadcrumbs extends HTMLElement {
                 font-size: var(--ry-breadcrumbs-text-size, 1rem);
                 text-decoration: var(--ry-breadcrumbs-text-deco, none);
                 color: oklch(var(--ry-breadcrumbs-link-color, 42.9% 0.2972777928415759 264.05202063805507));
+                -webkit-tap-highlight-color: oklch(0% 0 0 / 0);
                 &:hover {
                   opacity: 0.7;
                 }

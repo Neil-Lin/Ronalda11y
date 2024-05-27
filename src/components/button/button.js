@@ -18,6 +18,7 @@ class RyBtn extends HTMLElement {
       button {
         /* behavior */
         cursor: pointer;
+        -webkit-tap-highlight-color: oklch(0% 0 0 / 0);
         
         /* spacing */
         padding: var(--ry-btn-padding-vertical, 0.75rem) var(--ry-btn-padding-horizontal, 1rem);

@@ -18,6 +18,7 @@ class RyCheckbox extends HTMLElement {
         display: flex;
         align-items: center;
         gap: var(--ry-checkbox-content-gap, 0.5rem);
+        -webkit-tap-highlight-color: oklch(0% 0 0 / 0);
         input[type="checkbox"] {
           appearance: none;
           cursor: pointer;
