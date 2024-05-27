@@ -84,7 +84,7 @@
       </ry-checkbox> 
       <ry-checkbox 
         name="basic-checkbox"
-        value="Checkbox_value"
+        value="Checkbox_value2"
         checked
         class="basic-checkbox"
       >
@@ -117,7 +117,7 @@
       </ry-checkbox> 
       <ry-checkbox 
         name="test-checkbox"
-        value="Checkbox_value"
+        value="Checkbox_value2"
         checked
         class="custom-ry-checkbox"
       >
@@ -135,6 +135,7 @@
         name="test-checkbox"
         value="Checkbox_value4"
         disabled
+        checked
         class="custom-ry-checkbox"
       >
         勾選框4(禁用且已勾選)
@@ -250,6 +251,31 @@
       <h2>問與答</h2>
       <h3>相比原生如何？</h3>
       <p>使用 <code>ry-checkbox</code> 可以確保螢幕閱讀器正確閱讀 label 與 input 之間的關聯，推薦使用。</p>
+      <p>但即便是這樣還是不夠，如果是有一組多個相關 checkbox，最好搭配使用 role="group"、aria-labelledby、&lt;ul&gt;、&lt;li&gt;，如此一來可以知道同一組裡面有多少個 checkbox。</p>
+      <div role="group" aria-labelledby="checkbox-group">
+        <span id="checkbox-group">群組勾選框</span>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li>
+            <ry-checkbox 
+              name="basic-checkbox"
+              value="Checkbox_value"
+              class="basic-checkbox"
+            >
+              勾選框1
+            </ry-checkbox> 
+          </li>
+          <li>
+            <ry-checkbox 
+              name="basic-checkbox"
+              value="Checkbox_value2"
+              checked
+              class="basic-checkbox"
+            >
+              勾選框2(已勾選)
+            </ry-checkbox> 
+          </li>
+        </ul>
+      </div>
     </main>
   </body>
 </html>

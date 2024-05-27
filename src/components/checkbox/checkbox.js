@@ -63,6 +63,9 @@ class RyCheckbox extends HTMLElement {
         }
         &:has(input[type="checkbox"]:disabled) {
           cursor: not-allowed;
+          input[type="checkbox"] {
+            opacity: 0.5;
+          }
           .text {
             pointer-events: none;
             text-decoration: none;
