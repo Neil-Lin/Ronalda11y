@@ -303,7 +303,6 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
           background-color: oklch(var(--ry-checkbox-input-bg, 99.4% 0 0));
           &:focus-visible {
             outline: none;
-            box-shadow: inset 0 0 0 var(--ry-checkbox-input-focus-shadow-width, 3px) oklch(var(--ry-checkbox-input-focus-shadow-color, 83.15% 0.15681888825079074 78.05241467152487));
           }
           &:disabled {
             cursor: not-allowed;
@@ -334,8 +333,14 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
             color: oklch(var(--ry-checkbox-label-active-text-color, 53.7% 0 0));
           }
         }
+        &:has(input:focus-visible) {
+          box-shadow: inset 0 0 0 var(--ry-checkbox-input-focus-shadow-width, 3px) oklch(var(--ry-checkbox-input-focus-shadow-color, 83.15% 0.15681888825079074 78.05241467152487));
+        }
         &:has(input[type="checkbox"]:disabled) {
           cursor: not-allowed;
+          input[type="checkbox"] {
+            opacity: 0.5;
+          }
           .text {
             pointer-events: none;
             text-decoration: none;
@@ -343,4 +348,4 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
           }
         }
       }
-    `;const r=document.createElement("div");r.setAttribute("class","ry-checkbox");const o=document.createElement("label");o.setAttribute("for",e);const a=document.createElement("input");a.type="checkbox",a.id=e,a.name=this.getAttribute("name")||"default-checkbox",a.value=this.getAttribute("value")||"default",this.hasAttribute("checked")&&(a.checked=!0),this.hasAttribute("disabled")&&(a.disabled=!0);const n=document.createElement("div");n.setAttribute("class","text");const c=document.createElement("slot");n.appendChild(c),o.append(a,n),r.appendChild(o),this.shadowRoot.append(t,r),a.addEventListener("change",d=>{this.dispatchEvent(new CustomEvent("change",{detail:d.target.checked}))})}generateId(){const e=new Uint32Array(1);return window.crypto.getRandomValues(e),`ry-checkbox-${e[0].toString(36)}`}static get observedAttributes(){return["name","value","checked","disabled"]}attributeChangedCallback(e,t,r){const o=this.shadowRoot.querySelector("input");if(o)switch(e){case"checked":o.checked=r!==null;break;case"disabled":o.disabled=r!==null;break;default:o.setAttribute(e,r);break}}}customElements.define("ry-checkbox",m);
+    `;const r=document.createElement("div");r.setAttribute("class","ry-checkbox");const o=document.createElement("label");o.setAttribute("for",e);const a=document.createElement("input");a.type="checkbox",a.id=e,a.name=this.getAttribute("name")||"default-checkbox",a.value=this.getAttribute("value")||"default",this.hasAttribute("checked")&&(a.checked=!0),this.hasAttribute("disabled")&&(a.disabled=!0);const n=document.createElement("div");n.setAttribute("class","text");const c=document.createElement("slot");n.appendChild(c),o.append(a,n),r.appendChild(o),this.shadowRoot.append(t,r),a.addEventListener("change",d=>{this.dispatchEvent(new CustomEvent("change",{detail:d.target.checked}))}),a.addEventListener("focus",()=>{this.dispatchEvent(new CustomEvent("focus"))}),a.addEventListener("blur",()=>{this.dispatchEvent(new CustomEvent("blur"))})}generateId(){const e=new Uint32Array(1);return window.crypto.getRandomValues(e),`ry-checkbox-${e[0].toString(36)}`}static get observedAttributes(){return["name","value","checked","disabled"]}attributeChangedCallback(e,t,r){const o=this.shadowRoot.querySelector("input");if(o)switch(e){case"checked":o.checked=r!==null;break;case"disabled":o.disabled=r!==null;break;default:o.setAttribute(e,r);break}}}customElements.define("ry-checkbox",m);
