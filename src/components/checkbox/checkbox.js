@@ -28,7 +28,6 @@ class RyCheckbox extends HTMLElement {
           background-color: oklch(var(--ry-checkbox-input-bg, 99.4% 0 0));
           &:focus-visible {
             outline: none;
-            box-shadow: inset 0 0 0 var(--ry-checkbox-input-focus-shadow-width, 3px) oklch(var(--ry-checkbox-input-focus-shadow-color, 83.15% 0.15681888825079074 78.05241467152487));
           }
           &:disabled {
             cursor: not-allowed;
@@ -58,6 +57,9 @@ class RyCheckbox extends HTMLElement {
           .text {
             color: oklch(var(--ry-checkbox-label-active-text-color, 53.7% 0 0));
           }
+        }
+        &:has(input:focus-visible) {
+          box-shadow: inset 0 0 0 var(--ry-checkbox-input-focus-shadow-width, 3px) oklch(var(--ry-checkbox-input-focus-shadow-color, 83.15% 0.15681888825079074 78.05241467152487));
         }
         &:has(input[type="checkbox"]:disabled) {
           cursor: not-allowed;
@@ -107,6 +109,14 @@ class RyCheckbox extends HTMLElement {
     // Listen for checkbox events
     input.addEventListener('change', (event) => {
       this.dispatchEvent(new CustomEvent('change', { detail: event.target.checked }));
+    });
+
+    input.addEventListener('focus', () => {
+      this.dispatchEvent(new CustomEvent('focus'));
+    });
+
+    input.addEventListener('blur', () => {
+      this.dispatchEvent(new CustomEvent('blur'));
     });
   }
 
