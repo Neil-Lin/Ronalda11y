@@ -6,6 +6,7 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
           button {
             /* behavior */
             cursor: pointer;
+            -webkit-tap-highlight-color: oklch(0% 0 0 / 0);
             
             /* spacing */
             display: flex;
@@ -130,6 +131,7 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
                 font-size: var(--ry-breadcrumbs-text-size, 1rem);
                 text-decoration: var(--ry-breadcrumbs-text-deco, none);
                 color: oklch(var(--ry-breadcrumbs-link-color, 42.9% 0.2972777928415759 264.05202063805507));
+                -webkit-tap-highlight-color: oklch(0% 0 0 / 0);
                 &:hover {
                   opacity: 0.7;
                 }
@@ -158,11 +160,11 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
         ${r!==null?'aria-label="'+r+'"':""}
       >
         <ol>
-          ${o.map((n,c)=>`
+          ${o.map((i,c)=>`
                 <li>
-                  <a href="${n.url||""}" ${c===o.length-1?'aria-current="page"':""}>
+                  <a href="${i.url||""}" ${c===o.length-1?'aria-current="page"':""}>
                     <slot name="icon-${c+1}"></slot>
-                    <span>${n.text}</span>
+                    <span>${i.text}</span>
                   </a>
                   ${c!==o.length-1?'<span aria-hidden="true">'+a+"</span>":""}
                 </li>
@@ -173,6 +175,7 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
       button {
         /* behavior */
         cursor: pointer;
+        -webkit-tap-highlight-color: oklch(0% 0 0 / 0);
         
         /* spacing */
         padding: var(--ry-btn-padding-vertical, 0.75rem) var(--ry-btn-padding-horizontal, 1rem);
@@ -282,7 +285,7 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
         <slot name="content" part="content"></slot>
         <slot name="footer" part="footer"></slot>
       </div>
-    `}}customElements.define("ry-card",u);class m extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"});const e=this.generateId(),t=document.createElement("style");t.textContent=`
+    `}}customElements.define("ry-card",u);class p extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"});const e=this.generateId(),t=document.createElement("style");t.textContent=`
       .ry-checkbox {
         display: inline-block;
         vertical-align: middle;
@@ -293,6 +296,7 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
         display: flex;
         align-items: center;
         gap: var(--ry-checkbox-content-gap, 0.5rem);
+        -webkit-tap-highlight-color: oklch(0% 0 0 / 0);
         input[type="checkbox"] {
           appearance: none;
           cursor: pointer;
@@ -348,4 +352,4 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
           }
         }
       }
-    `;const r=document.createElement("div");r.setAttribute("class","ry-checkbox");const o=document.createElement("label");o.setAttribute("for",e);const a=document.createElement("input");a.type="checkbox",a.id=e,a.name=this.getAttribute("name")||"default-checkbox",a.value=this.getAttribute("value")||"default",this.hasAttribute("checked")&&(a.checked=!0),this.hasAttribute("disabled")&&(a.disabled=!0);const n=document.createElement("div");n.setAttribute("class","text");const c=document.createElement("slot");n.appendChild(c),o.append(a,n),r.appendChild(o),this.shadowRoot.append(t,r),a.addEventListener("change",d=>{this.dispatchEvent(new CustomEvent("change",{detail:d.target.checked}))}),a.addEventListener("focus",()=>{this.dispatchEvent(new CustomEvent("focus"))}),a.addEventListener("blur",()=>{this.dispatchEvent(new CustomEvent("blur"))})}generateId(){const e=new Uint32Array(1);return window.crypto.getRandomValues(e),`ry-checkbox-${e[0].toString(36)}`}static get observedAttributes(){return["name","value","checked","disabled"]}attributeChangedCallback(e,t,r){const o=this.shadowRoot.querySelector("input");if(o)switch(e){case"checked":o.checked=r!==null;break;case"disabled":o.disabled=r!==null;break;default:o.setAttribute(e,r);break}}}customElements.define("ry-checkbox",m);
+    `;const r=document.createElement("div");r.setAttribute("class","ry-checkbox");const o=document.createElement("label");o.setAttribute("for",e);const a=document.createElement("input");a.type="checkbox",a.id=e,a.name=this.getAttribute("name")||"default-checkbox",a.value=this.getAttribute("value")||"default",this.hasAttribute("checked")&&(a.checked=!0),this.hasAttribute("disabled")&&(a.disabled=!0);const i=document.createElement("div");i.setAttribute("class","text");const c=document.createElement("slot");i.appendChild(c),o.append(a,i),r.appendChild(o),this.shadowRoot.append(t,r),a.addEventListener("change",d=>{this.dispatchEvent(new CustomEvent("change",{detail:d.target.checked}))}),a.addEventListener("focus",()=>{this.dispatchEvent(new CustomEvent("focus"))}),a.addEventListener("blur",()=>{this.dispatchEvent(new CustomEvent("blur"))})}generateId(){const e=new Uint32Array(1);return window.crypto.getRandomValues(e),`ry-checkbox-${e[0].toString(36)}`}static get observedAttributes(){return["name","value","checked","disabled"]}attributeChangedCallback(e,t,r){const o=this.shadowRoot.querySelector("input");if(o)switch(e){case"checked":o.checked=r!==null;break;case"disabled":o.disabled=r!==null;break;default:o.setAttribute(e,r);break}}}customElements.define("ry-checkbox",p);

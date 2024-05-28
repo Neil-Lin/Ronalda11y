@@ -404,3 +404,22 @@
   /* --ry-checkbox-label-active-text-color:; */
   /* --ry-checkbox-label-disabled-text-color:; */
 }
+
+.custom-ry-switch {
+  --ry-switch-gap: 4rem;
+  /* --ry-switch-padding-top:; */
+  /* --ry-switch-padding-right:; */
+  /* --ry-switch-padding-bottom:; */
+  /* --ry-switch-padding-left:; */
+  /* --ry-switch-container-gap:; */
+  /* --ry-switch-input-border-width:; */
+  /* --ry-switch-input-border-style:; */
+  /* --ry-switch-input-border-color:; */
+  --ry-switch-input-border-radius: 0.625rem;
+  --ry-switch-inner-border-radius: 0.5rem;
+  --ry-switch-input-width: 6rem;
+  --ry-switch-inner-distance: 0.5rem;
+  --ry-switch-input-checked-bg: var(--color-primary-600);
+  /* --ry-switch-focus-shadow-color:; */
+  /* --ry-switch-focus-shadow-width:; */
+}
