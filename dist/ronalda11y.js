@@ -1,4 +1,4 @@
-class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"});const e=document.createElement("div");e.setAttribute("class","ry-accordion");const t=document.createElement("slot");e.appendChild(t),this.shadowRoot.appendChild(e)}}customElements.define("ry-accordion",s);class l extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"});const e=this.generateId(),t=this.generateId(),r=document.createElement("div");r.setAttribute("class","ry-accordion-item"),r.innerHTML=`
+class h extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"});const t=document.createElement("div");t.setAttribute("class","ry-accordion");const e=document.createElement("slot");t.appendChild(e),this.shadowRoot.appendChild(t)}}customElements.define("ry-accordion",h);class b extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"});const t=this.generateId(),e=this.generateId(),r=document.createElement("div");r.setAttribute("class","ry-accordion-item"),r.innerHTML=`
         <style>
           .ry-accordion-item {
             margin-bottom: var(--ry-accordion-item-margin-bottom, 1rem);
@@ -92,8 +92,8 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
             }
           }
         </style>
-        <button aria-expanded="false" aria-controls="${e}" part="button">
-            <div class="heading" id="${t}"><slot name="heading"></slot></div>
+        <button aria-expanded="false" aria-controls="${t}" part="button">
+            <div class="heading" id="${e}"><slot name="heading"></slot></div>
             <div class="info">
               <div>
                 <slot name="sub"></slot>
@@ -103,10 +103,10 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
               </div>
             </div>
         </button>
-        <div role="region" id="${e}" aria-labelledby="${t}" aria-hidden="true" part="region">
+        <div role="region" id="${t}" aria-labelledby="${e}" aria-hidden="true" part="region">
             <slot name="content"></slot>
         </div>
-      `,this.shadowRoot.append(r),this.button=this.shadowRoot.querySelector("button"),this.button.addEventListener("click",()=>this.toggleAccordion())}connectedCallback(){this.updateExpanded()}static get observedAttributes(){return["open"]}attributeChangedCallback(e,t,r){e==="open"&&this.updateExpanded()}updateExpanded(){const e=this.hasAttribute("open");this.button.setAttribute("aria-expanded",e),this.shadowRoot.querySelector('div[role="region"]').setAttribute("aria-hidden",!e)}generateId(){const e=new Uint32Array(1);return window.crypto.getRandomValues(e),`ry-accordion-item-${e[0].toString(36)}`}toggleAccordion(){const e=this.button.getAttribute("aria-expanded")==="true";this.button.setAttribute("aria-expanded",!e),this.shadowRoot.querySelector('div[role="region"]').setAttribute("aria-hidden",e),e?this.removeAttribute("open"):this.setAttribute("open","")}}customElements.define("ry-accordion-item",l);class h extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.attachInitialAttributes(),this.render()}attachInitialAttributes(){Array.from(this.attributes).forEach(e=>{e.name!=="style"&&!["class","label","items","separator"].includes(e.name)&&this.shadowRoot.host.setAttribute(e.name,e.value)})}static get observedAttributes(){return["id","class","aria-label","items","separator"]}attributeChangedCallback(e,t,r){t!==r&&this.render()}get items(){try{return JSON.parse(this.getAttribute("items")||"[]")}catch(e){return console.error("Error parsing 'items':",e),[]}}set items(e){try{JSON.parse(e),this.setAttribute("items",e),this.render()}catch{console.error("Invalid JSON provided for 'items':",e)}}render(){const e=this.getAttribute("id"),t=this.getAttribute("class"),r=this.getAttribute("aria-label"),o=this.items,a=this.getAttribute("separator")||"/";this.shadowRoot.innerHTML=`
+      `,this.shadowRoot.append(r),this.button=this.shadowRoot.querySelector("button"),this.button.addEventListener("click",()=>this.toggleAccordion())}connectedCallback(){this.updateExpanded()}static get observedAttributes(){return["open"]}attributeChangedCallback(t,e,r){t==="open"&&this.updateExpanded()}updateExpanded(){const t=this.hasAttribute("open");this.button.setAttribute("aria-expanded",t),this.shadowRoot.querySelector('div[role="region"]').setAttribute("aria-hidden",!t)}generateId(){const t=new Uint32Array(1);return window.crypto.getRandomValues(t),`ry-accordion-item-${t[0].toString(36)}`}toggleAccordion(){const t=this.button.getAttribute("aria-expanded")==="true";this.button.setAttribute("aria-expanded",!t),this.shadowRoot.querySelector('div[role="region"]').setAttribute("aria-hidden",t),t?this.removeAttribute("open"):this.setAttribute("open","")}}customElements.define("ry-accordion-item",b);class u extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.attachInitialAttributes(),this.render()}attachInitialAttributes(){Array.from(this.attributes).forEach(t=>{t.name!=="style"&&!["class","label","items","separator"].includes(t.name)&&this.shadowRoot.host.setAttribute(t.name,t.value)})}static get observedAttributes(){return["id","class","aria-label","items","separator"]}attributeChangedCallback(t,e,r){e!==r&&this.render()}get items(){try{return JSON.parse(this.getAttribute("items")||"[]")}catch(t){return console.error("Error parsing 'items':",t),[]}}set items(t){try{JSON.parse(t),this.setAttribute("items",t),this.render()}catch{console.error("Invalid JSON provided for 'items':",t)}}render(){const t=this.getAttribute("id"),e=this.getAttribute("class"),r=this.getAttribute("aria-label"),o=this.items,i=this.getAttribute("separator")||"/";this.shadowRoot.innerHTML=`
       <style>
         nav {
           background-color: oklch(var(--ry-breadcrumbs-bg, transparent));
@@ -155,23 +155,23 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
         }
       </style>
       <nav 
-        ${e!==null?'id="'+e+'"':""}
-        ${t!==null?'class="'+t+'"':""}
+        ${t!==null?'id="'+t+'"':""}
+        ${e!==null?'class="'+e+'"':""}
         ${r!==null?'aria-label="'+r+'"':""}
       >
         <ol>
-          ${o.map((i,c)=>`
+          ${o.map((a,n)=>`
                 <li>
-                  <a href="${i.url||""}" ${c===o.length-1?'aria-current="page"':""}>
-                    <slot name="icon-${c+1}"></slot>
-                    <span>${i.text}</span>
+                  <a href="${a.url||""}" ${n===o.length-1?'aria-current="page"':""}>
+                    <slot name="icon-${n+1}"></slot>
+                    <span>${a.text}</span>
                   </a>
-                  ${c!==o.length-1?'<span aria-hidden="true">'+a+"</span>":""}
+                  ${n!==o.length-1?'<span aria-hidden="true">'+i+"</span>":""}
                 </li>
               `).join("")}
         </ol>
       </nav>
-    `}}customElements.define("ry-breadcrumbs",h);class b extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.button=document.createElement("button"),this.button.addEventListener("click",r=>this.handleClick(r));const e=document.createElement("slot");this.button.appendChild(e),this.shadowRoot.appendChild(this.button);const t=document.createElement("style");t.textContent=`
+    `}}customElements.define("ry-breadcrumbs",u);class p extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.button=document.createElement("button"),this.button.addEventListener("click",r=>this.handleClick(r));const t=document.createElement("slot");this.button.appendChild(t),this.shadowRoot.appendChild(this.button);const e=document.createElement("style");e.textContent=`
       button {
         /* behavior */
         cursor: pointer;
@@ -278,14 +278,14 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
             transform: rotate(360deg);
           }
         }
-      `,this.shadowRoot.append(t,this.button)}connectedCallback(){this.attachInitialAttributes()}attachInitialAttributes(){Array.from(this.attributes).forEach(e=>{e.name!=="style"&&!e.name.startsWith("@")&&this.button.setAttribute(e.name,e.value)})}handleClick(e){if(this.button.getAttribute("type")==="submit"){const t=this.closest("form");t&&t.submit()}else if(this.button.getAttribute("type")==="reset"){const t=this.closest("form");t&&t.reset()}}static get observedAttributes(){return["disabled","loading","type"]}attributeChangedCallback(e,t,r){e==="loading"?this.updateLoadingState(r!==null):e.startsWith("@")||this.button.setAttribute(e,r)}updateLoadingState(e){e?(this.button.disabled=!0,this.button.setAttribute("aria-busy","true"),this.button.appendChild(this.createSpinner())):(this.button.disabled=!1,this.button.removeAttribute("aria-busy"),this.spinner&&this.button.removeChild(this.spinner))}createSpinner(){const e=document.createElement("span");e.classList.add("spinner");for(let t=0;t<3;t++){const r=document.createElement("span");e.appendChild(r)}return e}}window.customElements.define("ry-btn",b);class u extends HTMLElement{constructor(){super(),this.shadow=this.attachShadow({mode:"open"}),this.render()}render(){this.shadowRoot.innerHTML=`
+      `,this.shadowRoot.append(e,this.button)}connectedCallback(){this.attachInitialAttributes()}attachInitialAttributes(){Array.from(this.attributes).forEach(t=>{t.name!=="style"&&!t.name.startsWith("@")&&this.button.setAttribute(t.name,t.value)})}handleClick(t){if(this.button.getAttribute("type")==="submit"){const e=this.closest("form");e&&e.submit()}else if(this.button.getAttribute("type")==="reset"){const e=this.closest("form");e&&e.reset()}}static get observedAttributes(){return["disabled","loading","type"]}attributeChangedCallback(t,e,r){t==="loading"?this.updateLoadingState(r!==null):t.startsWith("@")||this.button.setAttribute(t,r)}updateLoadingState(t){t?(this.button.disabled=!0,this.button.setAttribute("aria-busy","true"),this.button.appendChild(this.createSpinner())):(this.button.disabled=!1,this.button.removeAttribute("aria-busy"),this.spinner&&this.button.removeChild(this.spinner))}createSpinner(){const t=document.createElement("span");t.classList.add("spinner");for(let e=0;e<3;e++){const r=document.createElement("span");t.appendChild(r)}return t}}window.customElements.define("ry-btn",p);class m extends HTMLElement{constructor(){super(),this.shadow=this.attachShadow({mode:"open"}),this.render()}render(){this.shadowRoot.innerHTML=`
       <div class="ry-card-container" part="ry-card-container">
         <slot name="heading" part="heading"></slot>
         <slot name="media" part="media"></slot>
         <slot name="content" part="content"></slot>
         <slot name="footer" part="footer"></slot>
       </div>
-    `}}customElements.define("ry-card",u);class p extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"});const e=this.generateId(),t=document.createElement("style");t.textContent=`
+    `}}customElements.define("ry-card",m);class y extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"});const t=this.generateId(),e=document.createElement("style");e.textContent=`
       .ry-checkbox {
         display: inline-block;
         vertical-align: middle;
@@ -352,4 +352,62 @@ class s extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"
           }
         }
       }
-    `;const r=document.createElement("div");r.setAttribute("class","ry-checkbox");const o=document.createElement("label");o.setAttribute("for",e);const a=document.createElement("input");a.type="checkbox",a.id=e,a.name=this.getAttribute("name")||"default-checkbox",a.value=this.getAttribute("value")||"default",this.hasAttribute("checked")&&(a.checked=!0),this.hasAttribute("disabled")&&(a.disabled=!0);const i=document.createElement("div");i.setAttribute("class","text");const c=document.createElement("slot");i.appendChild(c),o.append(a,i),r.appendChild(o),this.shadowRoot.append(t,r),a.addEventListener("change",d=>{this.dispatchEvent(new CustomEvent("change",{detail:d.target.checked}))}),a.addEventListener("focus",()=>{this.dispatchEvent(new CustomEvent("focus"))}),a.addEventListener("blur",()=>{this.dispatchEvent(new CustomEvent("blur"))})}generateId(){const e=new Uint32Array(1);return window.crypto.getRandomValues(e),`ry-checkbox-${e[0].toString(36)}`}static get observedAttributes(){return["name","value","checked","disabled"]}attributeChangedCallback(e,t,r){const o=this.shadowRoot.querySelector("input");if(o)switch(e){case"checked":o.checked=r!==null;break;case"disabled":o.disabled=r!==null;break;default:o.setAttribute(e,r);break}}}customElements.define("ry-checkbox",p);
+    `;const r=document.createElement("div");r.setAttribute("class","ry-checkbox");const o=document.createElement("label");o.setAttribute("for",t);const i=document.createElement("input");i.type="checkbox",i.id=t,i.name=this.getAttribute("name")||"default-checkbox",i.value=this.getAttribute("value")||"default",this.hasAttribute("checked")&&(i.checked=!0),this.hasAttribute("disabled")&&(i.disabled=!0);const a=document.createElement("div");a.setAttribute("class","text");const n=document.createElement("slot");a.appendChild(n),o.append(i,a),r.appendChild(o),this.shadowRoot.append(e,r),i.addEventListener("change",s=>{this.dispatchEvent(new CustomEvent("change",{detail:s.target.checked}))}),i.addEventListener("focus",()=>{this.dispatchEvent(new CustomEvent("focus"))}),i.addEventListener("blur",()=>{this.dispatchEvent(new CustomEvent("blur"))})}generateId(){const t=new Uint32Array(1);return window.crypto.getRandomValues(t),`ry-checkbox-${t[0].toString(36)}`}static get observedAttributes(){return["name","value","checked","disabled"]}attributeChangedCallback(t,e,r){const o=this.shadowRoot.querySelector("input");if(o)switch(t){case"checked":o.checked=r!==null;break;case"disabled":o.disabled=r!==null;break;default:o.setAttribute(t,r);break}}}customElements.define("ry-checkbox",y);class g extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"});const t=this.generateId(),e=document.createElement("style");e.textContent=`
+      .ry-switch {
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--ry-switch-gap, 1rem);
+        cursor: pointer;
+        padding-top: var(--ry-switch-padding-top, 0.5rem);
+        padding-right: var(--ry-switch-padding-right, 0.25rem);
+        padding-bottom: var(--ry-switch-padding-bottom, 0.5rem);
+        padding-left: var(--ry-switch-padding-left, 0.25rem);
+        -webkit-tap-highlight-color: oklch(0% 0 0 / 0);
+      }
+      .container {
+        display: flex;
+        align-items: center;
+        gap: var(--ry-switch-container-gap, 0.5rem);
+      }
+      .input {
+        position: relative;
+      }
+      input[type="checkbox"] {
+        appearance: none;
+        cursor: pointer;
+        margin: 0;
+        display: block;
+        width: var(--ry-switch-input-width, 4rem);
+        height: calc(var(--ry-switch-input-width, 4rem) / 2);
+        border: var(--ry-switch-input-border-width, 1px) var(--ry-switch-input-border-style, solid) oklch(var(--ry-switch-input-border-color, 78.94% 0 0));
+        border-radius: var(--ry-switch-input-border-radius, calc(var(--ry-switch-input-width, 4rem) / 4));
+        transition: background-color 360ms ease-in;
+      }
+      input[type="checkbox"]:focus-visible {
+        outline: none;
+      }
+      .input:before {
+        content: '';
+        display: block;
+        width: calc(var(--ry-switch-input-width, 4rem) / 2 - 2 * var(--ry-switch-inner-distance, 0.25rem));
+        height: calc(var(--ry-switch-input-width, 4rem) / 2 - 2 * var(--ry-switch-inner-distance, 0.25rem));
+        background-color: gray;
+        position: absolute;
+        top: var(--ry-switch-inner-distance, 0.25rem);
+        left: var(--ry-switch-inner-distance, 0.25rem);
+        border-radius: var(--ry-switch-inner-border-radius, calc((var(--ry-switch-input-width, 4rem) / 2 - var(--ry-switch-inner-distance, 0.25rem)) / 2));
+        transition: background-color 360ms ease-in, left 240ms ease-in;
+      }
+      .input:has(input[type="checkbox"]:checked) input[type="checkbox"] {
+        background-color: oklch(var(--ry-switch-input-checked-bg, 13.98% 0 0));
+      }
+      .input:has(input[type="checkbox"]:checked):before {
+        background-color: oklch(var(--ry-switch-inner-checked-bg, 99.4% 0 0));
+        left: calc(100% - (var(--ry-switch-input-width, 4rem) / 2 - 2 * var(--ry-switch-inner-distance, 0.25rem)) - var(--ry-switch-inner-distance, 0.25rem));
+      }
+      .ry-switch:hover,
+      .ry-switch:has(input:focus-visible) {
+        box-shadow: inset 0 0 0 var(--ry-switch-focus-shadow-width, 3px) oklch(var(--ry-switch-focus-shadow-color, 83.15% 0.15681888825079074 78.05241467152487));
+      }
+    `;const r=document.createElement("label");r.classList.add("ry-switch"),r.setAttribute("for",t);const o=document.createElement("div");o.classList.add("container");const i=document.createElement("span");i.classList.add("off-text"),i.setAttribute("aria-hidden","true");const a=document.createElement("div");a.classList.add("input");const n=document.createElement("input");n.id=t,n.type="checkbox",n.setAttribute("role","switch"),a.appendChild(n);const s=document.createElement("span");s.classList.add("on-text"),s.setAttribute("aria-hidden","true"),o.append(i,a,s),r.append(o),this.shadowRoot.append(e,r);const d=document.createElement("slot");r.prepend(d),n.addEventListener("change",l=>{this.dispatchEvent(new CustomEvent("change",{detail:l.target.checked}))})}generateId(){const t=new Uint32Array(1);return window.crypto.getRandomValues(t),`ry-switch-${t[0].toString(36)}`}static get observedAttributes(){return["name","value","checked","disabled","off","on"]}attributeChangedCallback(t,e,r){const o=this.shadowRoot.querySelector("input"),i=this.shadowRoot.querySelector(".off-text"),a=this.shadowRoot.querySelector(".on-text");if(o)switch(t){case"checked":o.checked=r!==null;break;case"disabled":o.disabled=r!==null;break;case"off":i.textContent=r||"Off";break;case"on":a.textContent=r||"On";break;default:o.setAttribute(t,r);break}}connectedCallback(){const t=this.shadowRoot.querySelector(".off-text"),e=this.shadowRoot.querySelector(".on-text");this.hasAttribute("off")?t.textContent=this.getAttribute("off"):t.textContent="",this.hasAttribute("on")?e.textContent=this.getAttribute("on"):e.textContent=""}}customElements.define("ry-switch",g);
