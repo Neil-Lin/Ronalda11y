@@ -76,41 +76,27 @@ class RyCheckbox extends HTMLElement {
       }
     `;
 
-    // Create a container for the checkbox and its label
     const container = document.createElement('div');
     container.setAttribute('class', 'ry-checkbox');
 
-    // Create the label and input elements
     const label = document.createElement('label');
     label.setAttribute('for', inputID);
+
     const input = document.createElement('input');
     input.type = 'checkbox';
     input.id = inputID;
     input.name = this.getAttribute('name') || 'default-checkbox';
     input.value = this.getAttribute('value') || 'default';
-    if (this.hasAttribute('checked')) {
-      input.checked = true;
-    }
-    if (this.hasAttribute('disabled')) {
-      input.disabled = true;
-    }
 
-    // Create the text slot
     const textSlot = document.createElement('div');
     textSlot.setAttribute('class', 'text');
     const slot = document.createElement('slot');
     textSlot.appendChild(slot);
 
-    // Append elements to the label
     label.append(input, textSlot);
-
-    // Append all elements to the container
     container.appendChild(label);
-
-    // Append style and container to the shadow root
     this.shadowRoot.append(style, container);
 
-    // Listen for checkbox events
     input.addEventListener('change', (event) => {
       this.dispatchEvent(new CustomEvent('change', { detail: event.target.checked }));
     });
@@ -124,7 +110,6 @@ class RyCheckbox extends HTMLElement {
     });
   }
 
-  // Method to generate a unique ID
   generateId() {
     const byteArray = new Uint32Array(1);
     window.crypto.getRandomValues(byteArray);
@@ -149,6 +134,17 @@ class RyCheckbox extends HTMLElement {
           input.setAttribute(name, newValue);
           break;
       }
+    }
+  }
+
+  connectedCallback() {
+    this.updateCheckedState();
+  }
+
+  updateCheckedState() {
+    const input = this.shadowRoot.querySelector('input');
+    if (input) {
+      input.checked = this.hasAttribute('checked');
     }
   }
 }
