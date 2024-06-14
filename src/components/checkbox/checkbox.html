@@ -253,6 +253,30 @@
       <h3>How does it compare to native checkboxes?</h3>
       <p>Using the <code>ry-checkbox</code> ensures that screen readers correctly interpret the association between the label and input, making it recommended for use.</p>
       <p>But even so, this is still not enough. If there is a group of multiple related checkboxes, it's best to use role="group", aria-labelledby, &lt;ul&gt; and &lt;li&gt. This way, it is possible to know how many checkboxes are in the same group.</p>
+      <div role="group" aria-labelledby="checkbox-group">
+        <span id="checkbox-group">Group Checkboxes</span>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li>
+            <ry-checkbox 
+              name="basic-checkbox"
+              value="Checkbox_value"
+              class="basic-checkbox"
+            >
+              Checkbox
+            </ry-checkbox> 
+          </li>
+          <li>
+            <ry-checkbox 
+              name="basic-checkbox"
+              value="Checkbox_value2"
+              checked
+              class="basic-checkbox"
+            >
+              Checkbox2(checked)
+            </ry-checkbox> 
+          </li>
+        </ul>
+      </div>
     </main>
   </body>
 </html>
