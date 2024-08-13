@@ -98,8 +98,10 @@ class RyCheckbox extends HTMLElement {
     this.shadowRoot.append(style, container);
 
     input.addEventListener('change', (event) => {
+      this.checked = event.target.checked;
       this.dispatchEvent(new CustomEvent('change', { detail: event.target.checked }));
     });
+    
 
     input.addEventListener('focus', () => {
       this.dispatchEvent(new CustomEvent('focus'));
