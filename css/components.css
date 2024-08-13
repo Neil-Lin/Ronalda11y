@@ -423,3 +423,22 @@
   /* --ry-switch-focus-shadow-color:; */
   /* --ry-switch-focus-shadow-width:; */
 }
+
+.custom-ry-radio {
+  /* --ry-radio-content-gap:; */
+  /* --ry-radio-input-width:; */
+  /* --ry-radio-input-height:; */
+  /* --ry-radio-input-border-width:; */
+  /* --ry-radio-input-border-style:; */
+  /* --ry-radio-input-border-color:; */
+  /* --ry-radio-input-bg:; */
+  --ry-radio-input-checked-bg: var(--color-primary-500);
+  --ry-radio-input-checked-circle-color: var(--color-danger-500);
+  /* --ry-radio-label-text-color:; */
+  /* --ry-radio-label-text-size:; */
+  /* --ry-radio-label-hover-text-deco:; */
+  /* --ry-radio-label-active-text-color:; */
+  /* --ry-radio-input-focus-shadow-width:; */
+  /* --ry-radio-input-focus-shadow-color:; */
+  /* --ry-radio-label-disabled-text-color:; */
+}
