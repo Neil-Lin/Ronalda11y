@@ -104,7 +104,9 @@ class RySwitch extends HTMLElement {
 
     // Event listener for switch change
     inputElement.addEventListener('change', (event) => {
-      this.dispatchEvent(new CustomEvent('change', { detail: event.target.checked }));
+      if (event.target === inputElement) {
+        this.dispatchEvent(new CustomEvent('change', { detail: inputElement.checked }));
+      }
     });
   }
 
@@ -124,26 +126,27 @@ class RySwitch extends HTMLElement {
     const offText = this.shadowRoot.querySelector('.off-text');
     const onText = this.shadowRoot.querySelector('.on-text');
     
-    if (input) {
-      switch (name) {
-        case 'checked':
-          input.checked = newValue !== null;
-          break;
-        case 'disabled':
-          input.disabled = newValue !== null;
-          break;
-        case 'off':
-          offText.textContent = newValue || 'Off';
-          break;
-        case 'on':
-          onText.textContent = newValue || 'On';
-          break;
-        default:
-          input.setAttribute(name, newValue);
-          break;
-      }
+    if (!input || !offText || !onText) return;
+  
+    switch (name) {
+      case 'checked':
+        input.checked = newValue !== null;
+        break;
+      case 'disabled':
+        input.disabled = newValue !== null;
+        break;
+      case 'off':
+        offText.textContent = newValue || 'Off';
+        break;
+      case 'on':
+        onText.textContent = newValue || 'On';
+        break;
+      default:
+        input.setAttribute(name, newValue);
+        break;
     }
   }
+  
 
   connectedCallback() {
     const offText = this.shadowRoot.querySelector('.off-text');
