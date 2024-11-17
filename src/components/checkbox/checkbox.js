@@ -1,7 +1,10 @@
 class RyCheckbox extends HTMLElement {
+  static formAssociated = true;
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this.internals = this.attachInternals();
 
     // Generate a unique ID for the input element
     const inputID = this.generateId();
@@ -100,8 +103,8 @@ class RyCheckbox extends HTMLElement {
     input.addEventListener('change', (event) => {
       this.checked = event.target.checked;
       this.dispatchEvent(new CustomEvent('change', { detail: event.target.checked }));
+      this.updateFormValue();
     });
-    
 
     input.addEventListener('focus', () => {
       this.dispatchEvent(new CustomEvent('focus'));
@@ -119,7 +122,7 @@ class RyCheckbox extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['name', 'value', 'checked', 'disabled'];
+    return ['name', 'value', 'checked', 'disabled', 'required'];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
@@ -132,8 +135,14 @@ class RyCheckbox extends HTMLElement {
         case 'disabled':
           input.disabled = newValue !== null;
           break;
-        default:
-          input.setAttribute(name, newValue);
+        case 'name':
+          input.name = newValue;
+          break;
+        case 'value':
+          input.value = newValue;
+          break;
+        case 'required':
+          input.required = newValue !== null;
           break;
       }
     }
@@ -141,6 +150,7 @@ class RyCheckbox extends HTMLElement {
 
   connectedCallback() {
     this.updateCheckedState();
+    this.updateFormValue();
   }
 
   updateCheckedState() {
@@ -149,6 +159,35 @@ class RyCheckbox extends HTMLElement {
       input.checked = this.hasAttribute('checked');
     }
   }
+
+  updateFormValue() {
+    const input = this.shadowRoot.querySelector('input');
+    const value = input.checked ? this.getAttribute('value') || 'on' : null;
+    this.internals.setFormValue(value);
+
+    if (input.validity.valid) {
+      this.internals.setValidity({});
+    } else {
+      this.internals.setValidity(input.validity, input.validationMessage, input);
+    }
+  }
+
+  formDisabledCallback(disabled) {
+    const input = this.shadowRoot.querySelector('input');
+    if (input) {
+      input.disabled = disabled;
+    }
+  }
+
+  formResetCallback() {
+    const input = this.shadowRoot.querySelector('input');
+    if (input) {
+      input.checked = false;
+      this.checked = false;
+      this.updateFormValue();
+    }
+  }
 }
 
 customElements.define('ry-checkbox', RyCheckbox);
+
